@@ -1,0 +1,453 @@
+.patientDetailsSearch {
+    margin-right: 0px;
+}
+
+.heading {
+    color: #fff;
+    background-color: #3c8dbc;
+    height: 40px;
+}
+
+.emptyTableMessage {
+    color: red;
+    font-size: 18px;
+    margin-top: 2px;
+}
+
+.prescriptionsList:hover {
+    color: black;
+    text-decoration: underline;
+}
+
+.prescriptionInModal>tbody>tr>td,
+.prescriptionInModal>thead>tr>th {
+    text-align: center;
+}
+
+.generatePrintBillSubmit {
+    margin-top: 6px;
+}
+
+.prescriptionInSearch {
+    margin-top: 5px;
+}
+
+.invoiceHistoryLink {
+    font-size: 14px;
+    color: white;
+    cursor: pointer;
+}
+
+.invoiceHistoryLink:hover {
+    font-size: 16px;
+    text-decoration: underline;
+    color: black;
+}
+
+.doctorsListInBill {
+    cursor: pointer;
+}
+
+.nextDueDateTxtBox {
+    margin-right: 50px;
+}
+
+
+/* .radiosInPatientSearch:hover {
+    transform: scale(2);
+} */
+
+.panel-default>.panel-heading {
+    color: white;
+    background-image: none;
+    background-color: #3c8dbc;
+}
+
+.billManagementBtn {
+    padding-top: 3px;
+    height: 30px;
+    color: white;
+    background-color: #3c8dbc;
+    border: 1px solid #367fa9;
+}
+
+.billDelete,
+.finalBillSubmit {
+    color: white;
+    background-color: #3c8dbc;
+}
+
+.billManagementBtn:hover,
+.billDelete:hover,
+.finalBillSubmit:hover {
+    background-color: #367fa9;
+    color: white;
+}
+
+.btn:active {
+    color: white;
+}
+
+.btn:focus {
+    color: white;
+}
+
+.invoiceNumberRow {
+    margin-top: -10px;
+    margin-bottom: 5px;
+}
+
+#enterDigitsSpan {
+    margin-top: -10px;
+}
+
+#enterPhoneNumberSpan {
+    margin-top: -10px;
+}
+
+.warningParagraphs {
+    color: red;
+    margin-left: 25px;
+}
+
+.nextDueDateAndAmount {
+    margin-bottom: 4px;
+}
+
+.patientDetailsRow {
+    margin-top: -20px;
+    padding-top: 8px;
+}
+
+.patientConsultation {
+    margin-left: 8px;
+}
+
+.patientInfoSearchMedicine {
+    margin-left: 0px;
+    margin-bottom: 10px;
+}
+
+.patientConsultation {
+    margin-left: 0px;
+    margin-bottom: 5px;
+    margin-top: -14px;
+}
+
+.medicinesRow {
+    margin-top: -17px;
+    margin-bottom: 3px;
+}
+
+.tests {
+    margin-top: -17px;
+    margin-bottom: -15px;
+}
+
+.finalBillTable>thead>tr>th,
+.finalBillTable>tbody>tr>td {
+    border: 2px solid #f5f5f5;
+}
+
+.finalBillTable>thead>tr {
+    border-top: 2px solid #f5f5f5;
+}
+
+
+/*#consultationSubmitBtn {
+    margin-left: 4px;
+}*/
+
+#TestsSubmitBtn {
+    margin-top: 5px;
+}
+
+.horizontalLine {
+    margin-top: 4px;
+}
+
+#testsLabel {
+    margin-right: 24px;
+}
+
+.headerInfo {
+    margin-top: 0px;
+}
+
+.btn.billBtn {
+    background-color: #3c8dbc;
+    border: 1px solid #367fa9;
+    color: white;
+}
+
+.btn.billBtn:hover {
+    color: white;
+    background-color: #367fa9;
+}
+
+#patientPhoneLabel {
+    margin-right: 4px;
+}
+
+.billTxtBox,
+.form-control.billTxtBox {
+    height: 32px;
+    border-radius: 4px;
+    border: 1px solid #3c8dbc;
+}
+
+.patientSearchBtns,
+#exampleInputpatientSearchNumber {
+    height: 38px;
+}
+
+.consultationRow {
+    margin-top: 12px;
+}
+
+.dropdown>button {
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    white-space: nowrap !important;
+    margin-left: 10px;
+    border: 1px solid #3c8dbc;
+    background-color: #fff;
+}
+
+#caretInAdmin {
+    position: absolute;
+    left: 87%;
+    top: 50%;
+}
+
+@media only screen and (min-width:991px) {
+    #walkinAppointmentCaret {
+        position: absolute;
+        left: 75%;
+        top: 64%;
+    }
+    #walkinAppointmentDropdown {
+        width: 180px !important;
+        margin-left: 14px;
+        height: 68px !important;
+    }
+}
+
+@media only screen and (min-width:768px) and (max-width:990px) {
+    #walkinAppointmentCaret {
+        position: absolute;
+        left: 75%;
+        top: 52%;
+    }
+    #walkinAppointmentDropdown {
+        width: 180px !important;
+        margin-left: 70px !important;
+        height: 68px !important;
+    }
+}
+
+@media only screen and (max-width:767px) {
+    #walkinAppointmentCaret {
+        position: absolute;
+        left: 32%;
+        top: 48%;
+    }
+    #walkinAppointmentDropdown {
+        width: 180px !important;
+        margin-left: 70px !important;
+        height: 68px !important;
+    }
+}
+
+#caretDoctorInAdmin {
+    position: absolute;
+    left: 85%;
+    top: 50%;
+}
+
+#caretInBillManagement {
+    position: absolute;
+    left: 84%;
+    top: 45%;
+}
+
+@media only screen and (max-width:768px) {
+    #caretInBillManagement {
+        position: absolute;
+        left: 120px;
+        top: 45%;
+    }
+    #doctorServices {
+        width: 120px !important;
+    }
+}
+
+
+/* .dropdown>ul {
+    margin-left: 4px;
+} */
+
+.dropdown-menu>li>a {
+    margin-left: -5px !important;
+    white-space: normal !important;
+    word-wrap: break-word !important;
+}
+
+
+/* .dropdown-menu>li>a:hover {
+    margin-left: -5px;
+} */
+
+#dueDateBtn,
+#consultationBtn {
+    width: 130px;
+}
+
+
+/*#exampleInputCost,
+#sessionDatepickerCost {
+    margin-left: 4px;
+}*/
+
+#sessionDatepickerCost {}
+
+#consultationForm,
+.patientInfoSearchMedicine,
+.tests {
+    margin-left: 0px;
+}
+
+.invoiceNumberRowItem {
+    margin-bottom: 5px;
+}
+
+.costsTable {
+    margin-top: 10px;
+}
+
+#remainderBtn {
+    width: 100%;
+}
+
+.billSelectBoxes,
+.doctorSelectBox {
+    height: 32px;
+    border: 1px solid #3c8dbc;
+    border-radius: 4px;
+}
+
+.patientDetails {
+    margin-left: 4px;
+}
+
+
+/*.consultationFormItems {
+    margin-right: 45px;
+}*/
+
+@media only screen and (min-width:1262px) {
+    .consultationFormItems,
+    #exampleInputTestsCost {
+        margin-right: 45px;
+    }
+}
+
+@media only screen and (max-width:1262px) {
+    .billSelectBoxes {
+        width: 135px;
+    }
+}
+
+@media only screen and (min-width:1262px) {
+    #exampleInputMedicine {
+        width: 350px;
+        margin-right: 45px;
+    }
+}
+
+@media only screen and (min-width:1262px) {
+    #exampleInputTests {
+        width: 350px;
+        margin-right: 45px;
+    }
+}
+
+@media only screen and (min-width:1262px) {
+    #TestsSubmitBtn,
+    #consultationSubmitBtn {
+        width: 95px;
+    }
+}
+
+@media only screen and (min-width:1262px) {
+    #exampleInputmedicineAvailability,
+    #exampleInputTestDate {
+        width: 135px;
+    }
+}
+
+@media only screen and (min-width:1262px) {
+    #exampleInputMedicineCost,
+    #exampleInputmedicineAvailability,
+    #exampleInputTestDate {
+        margin-right: 45px;
+    }
+}
+
+.patientDrpDwn>button {
+    margin-right: 0px;
+}
+
+.form-control.billTxtBoxMedicine,
+#exampleInputmedicineAvailability,
+#medicineAvailabilityBtn,
+.billTxtMedicineCost {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.patientDrpDwn>button {
+    margin-right: 0px;
+}
+
+@media only screen and (min-width:1262px) {
+    .doctorBillsDropdown {
+        width: 140px;
+    }
+}
+
+#doctorNameBtn {
+    width: 160px;
+}
+
+#doctorNameCaret {
+    position: absolute;
+    left: 140px;
+    top: 40%;
+}
+
+#dropdownDoctors {
+    margin-left: 7px;
+    width: 165px !important;
+}
+
+
+/*.patientDetailsSearchRow{
+    display:inline-block;
+}*/
+
+
+/* @media only screen and (min-width:1262px) {
+    .patientDetailsSearch {
+        width: 25%;
+        float: left;
+    }
+}
+
+@media only screen and (min-width:1262px) {
+    .billInfo {
+        float: right;
+        width: 75%;
+    }
+}
+ */

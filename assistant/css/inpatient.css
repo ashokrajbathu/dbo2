@@ -1,0 +1,205 @@
+.inpatientContents {
+    margin-left: 15px;
+}
+
+#inpatientSearchForm {
+    margin-top: 20px;
+}
+
+@media only screen and (max-width:768px) {
+    #exampleInpatientPhone {
+        width: 180px;
+    }
+}
+
+.patientDetailsBoxRow {
+    margin-top: 8px;
+}
+
+#myTable>thead>tr {
+    border-bottom: 1px #999 solid;
+}
+
+#myTable {
+    margin-bottom: 10px;
+    height: 300px;
+    overflow-y: scroll;
+}
+
+#myBedsTable {
+    margin-top: 15px !important;
+}
+
+#myTable>table>thead>tr>th,
+#myTable>table>tbody>tr>td,
+#myBedsTable>table>thead>tr>th,
+#myBedsTable>table>tbody>tr>td {
+    text-align: center;
+}
+
+.patientDetailsBox {
+    border: 1px solid #c5c5c5;
+}
+
+.dropdownInModalInpatient {
+    border: 1px solid #3c8dbc;
+    color: black !important;
+}
+
+.dropdown-menu,
+.dropdown-menu>li,
+.dropdown-menu>li>a {
+    width: 100% !important;
+}
+
+
+/* .dropdown-menu>li>a:hover,
+.dropdown-menu>li:hover {
+    background-color: #3c8dbc !important;
+    color: white !important;
+} */
+
+.dropdown-menu {
+    max-height: 155px !important;
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
+}
+
+@media only screen and (max-width: 991px) {
+    .docDropdownInInpatient {
+        margin-bottom: 8px;
+    }
+}
+
+#doctorCategoryDropdown>ul>li,
+#doctorNameDropdown>ul>li,
+#roomCategoryDropdown>ul>li,
+#roomNameDropdown>ul>li {
+    text-align: center !important;
+}
+
+@media only screen and (max-width: 991px) {
+    .doctorInInpatientPanel>.panel-heading {
+        height: 50px !important;
+    }
+}
+
+.docDropdownInInpatient {
+    margin-left: -2px !important;
+    height: 35px;
+    border-color: #d2d6de !important;
+    color: black !important;
+}
+
+.roomTypeDropdown {
+    height: 25px !important;
+}
+
+#caretRoomType,
+#caretRoomTypeStatus {
+    position: absolute;
+    left: 95%;
+    top: 43%;
+}
+
+#fieldTypeCaret,
+#sectionNameCaret,
+#labelCaret {
+    position: absolute;
+    left: 230px;
+    top: 36%;
+}
+
+@media only screen and (max-width:350px) {
+    #caretRoomType,
+    #caretRoomTypeStatus {
+        left: 92%;
+    }
+}
+
+@media only screen and (max-width:350px) {
+    #caretRoomCategoryType {
+        left: 90% !important;
+    }
+}
+
+#caretRoomCategoryType,
+#caretRoomName {
+    position: absolute;
+    left: 95%;
+    top: 32%;
+}
+
+.dropdownInRoomsSection {
+    margin-bottom: 4px;
+}
+
+.roomDropdowns {
+    margin-bottom: 8px !important;
+}
+
+#caret {
+    position: absolute;
+    left: 90%;
+    top: 45%;
+}
+
+.caretCss {
+    margin-top: 10px;
+    float: right;
+}
+
+.dropdownInModalInpatient:hover,
+.docDropdownInInpatient:hover,
+.docDropdownInInpatient:active,
+.dropdownInModalInpatient:active {
+    color: black !important;
+}
+
+.buttonsInInpatientModal {
+    margin-right: 8px;
+}
+
+.inpatientRowInModal {
+    margin-bottom: -5px;
+}
+
+.doctorInInpatientPanel>.panel-heading {
+    color: white;
+    height: 35px;
+    background-color: #3c8dbc;
+}
+
+.doctorInInpatientPanel>.panel-heading>h4 {
+    margin-top: -2px !important;
+}
+
+.doctorInInpatientPanel>.doctorInInpatientPanelBody {
+    border: 1px solid #c5c5c5;
+}
+
+#labsTable>thead>tr>th,
+#labsTable>tbody>tr>td {
+    text-align: center !important;
+}
+
+#fieldTypeBtn,
+#sectionNameBtn,
+#labelBtn,
+#newSectionBtn {
+    padding-top: 1px;
+    width: 270px !important;
+}
+
+#fieldTypeDropDown,
+#sectionNameDropDown,
+#labelDropdownDiv,
+#sectionNameInModal {
+    margin-top: -6px !important;
+    width: 270px !important;
+}
+
+#dropdownAddedFieldsTextArea,
+#addedHeaderTextArea {
+    margin-top: 8px;
+}

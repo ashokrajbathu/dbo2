@@ -1,0 +1,82 @@
+#myTemplatesHeader {
+    color: black;
+    font-size: 20px;
+}
+
+#myPrescriptionsBody {
+    background-color: white;
+}
+
+.activeTemplate {
+    background-color: white;
+}
+
+#addImageHeading {
+    margin-left: 2px;
+}
+
+#drugTemplatesTable {
+    
+}
+
+.imageInSettings {
+    margin-top: 8px;
+    height: 200px;
+    width: 300px;
+}
+
+#daysOrQuantSelectBox {
+    height: 30px;
+    width: 100px;
+}
+
+#images {
+    display: inline-block;
+    float: left;
+    width: 300px;
+    height: 200px;
+    position: relative;
+}
+
+#tools_sketch {
+    /*  background: url(http://farm1.static.flickr.com/91/239595759_3c3626b24a_b.jpg) no-repeat center center; */
+    background-size: 100%;
+    width: 300px;
+    height: 200px;
+    display: inline-block;
+    float: left;
+    position: relative;
+}
+
+.canvasImage {
+    margin-left: 100px;
+}
+
+.del_photo {
+    display: inline-block;
+    float: right;
+    margin: 5px 5px 0 5px;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+#templateOne,
+#templateTwo,
+#templateThree {
+    cursor: pointer;
+}
+
+.drugTemplateBody {
+    margin-left: 12px;
+}
+
+.addDrugButtonInTemplate {
+    color: white;
+    background-color: #3c8dbc;
+}
+
+.addDrugButtonInTemplate:hover {
+    color: white;
+    background-color: #3c8dbc;
+}

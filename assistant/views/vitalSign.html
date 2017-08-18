@@ -1,0 +1,111 @@
+<div ng-controller="vitalSignController as vitalSign">
+    <ul class="nav nav-tabs">
+        <li class="active"><a>Vital Sign</a></li>
+    </ul>
+    <div class="tab">
+        <div id="contentOfVitalTab" class="tab-content activeTabContent">
+            <button class="btn mainAdminBtn" data-toggle="modal" data-target="#addVitalModal">Add Vital Parameters</button>
+            <div id="addVitalModal" class="modal fade" role="dialog">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title">Vital Parameters</h4>
+                        </div>
+                        <div class="modal-body">
+                            <form class="form-horizontal">
+                                <div class="form-group">
+                                    <label for="inputVitalDate" class="col-sm-2 col-md-2 col-xs-2 control-label">Date</label>
+                                    <div class="col-md-10 col-sm-10 col-xs-10">
+                                        <input tooltip-popup-close-delay='1000' tooltip-placement="bottom" tooltip-is-open="vitalSign.dateToolTip" tooltip-trigger="vitalSign.dateToolTip" uib-tooltip="Please fill out this field." ng-model="vitalSign.newSign.date" class="form-control" id="inputVitalDate" placeholder="Date">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputVitalTimepicker" class="col-sm-2 col-md-2 col-xs-2 control-label">Time</label>
+                                    <div class="col-md-10 col-sm-10 col-xs-10">
+                                        <input ng-model="vitalSign.newSign.time" type="text" class="form-control" id="inputIntakeTime" placeholder="Time">
+                                        <uib-timepicker ng-change="vitalSign.timeChangeInTxtBox()" ng-model="vitalSign.mytime" hour-step="vitalSign.hstep" minute-step="vitalSign.mstep" show-meridian="vitalSign.ismeridian"></uib-timepicker>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputPulse" class="col-sm-2 col-md-2 col-xs-2 control-label">Pulse Rate</label>
+                                    <div class="col-sm-4 col-md-4 col-xs-4">
+                                        <input ng-model="vitalSign.newSign.pulse" type="text" class="form-control" id="inputPulse" placeholder="Pulse Rate(/min)">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputBP" class="col-sm-2 col-md-2 col-xs-2 control-label">Blood Pressure</label>
+                                    <div class="col-sm-4 col-md-4 col-xs-4">
+                                        <input ng-model="vitalSign.newSign.bp" type="text" class="form-control" id="inputPulse" placeholder="Blood Pressure(mm of Hg)">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputTemperature" class="col-sm-2 col-md-2 col-xs-2 control-label">Temperature</label>
+                                    <div class="col-sm-4 col-md-4 col-xs-4">
+                                        <input ng-model="vitalSign.newSign.temperature" type="text" class="form-control" id="inputTemperature" placeholder="Temperature(C)">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputTemp" class="col-sm-2 col-md-2 col-xs-2 control-label">Respiration</label>
+                                    <div class="col-sm-4 col-md-4 col-xs-4">
+                                        <input ng-model="vitalSign.newSign.respiration" type="text" class="form-control" id="inputTemp" placeholder="Respiration(/min)">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputHeight" class="col-sm-2 col-md-2 col-xs-2 control-label">Height</label>
+                                    <div class="col-sm-4 col-md-4 col-xs-4">
+                                        <input ng-model="vitalSign.newSign.height" type="text" class="form-control" id="inputHeight" placeholder="Height(Cm)">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputWeight" class="col-sm-2 col-md-2 col-xs-2 control-label">Weight</label>
+                                    <div class="col-sm-4 col-md-4 col-xs-4">
+                                        <input ng-model="vitalSign.newSign.weight" type="text" class="form-control" id="inputWeight" placeholder="Weight(Kg)">
+                                    </div>
+                                </div>
+                                <div class="form-inline">
+                                    <div class="col-md-offset-2">
+                                        <button ng-click="vitalSign.addVitalSignInModal()" class="btn mainAdminBtn">Save</button>
+                                        <button class="btn btn-default" data-dismiss="modal">Cancel</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <table class="table mainAdminTable table-hover table-striped">
+                <thead>
+                    <tr>
+                        <th>Date Time</th>
+                        <th>Pulse Rate</th>
+                        <th>Temperature</th>
+                        <th>Height</th>
+                        <th>Weight</th>
+                        <th>Blood Pressure</th>
+                        <th>Respiration</th>
+                        <th>Prepared By</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody ng-if="patientMedication && vitalSign.getData();">
+                    <tr ng-repeat="vitalSignEntity in vitalSign.patientEventsList">
+                        <td ng-bind="vitalSignEntity.referenceDetails.date+' '+vitalSignEntity.referenceDetails.time"></td>
+                        <td ng-bind="vitalSignEntity.referenceDetails.pulseRate"></td>
+                        <td ng-bind="vitalSignEntity.referenceDetails.temperature"></td>
+                        <td ng-bind="vitalSignEntity.referenceDetails.height"></td>
+                        <td ng-bind="vitalSignEntity.referenceDetails.weight"></td>
+                        <td ng-bind="vitalSignEntity.referenceDetails.bp"></td>
+                        <td ng-bind="vitalSignEntity.referenceDetails.respiration"></td>
+                        <td ng-bind="vitalSignEntity.assistantName||vitalSign.assistantName"></td>
+                        <td>
+                            <a ng-click="vitalSign.removeEvent(vitalSignEntity,$index)" style="cursor:pointer;">Remove</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

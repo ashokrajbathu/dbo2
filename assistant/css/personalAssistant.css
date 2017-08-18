@@ -1,0 +1,979 @@
+    .sidebar-menu {
+        padding-left: 35px;
+        margin-top: 50px;
+    }
+    
+    [ng\:cloak],
+    [ng-cloak],
+    [data-ng-cloak],
+    [x-ng-cloak],
+    .ng-cloak,
+    .x-ng-cloak {
+        display: none !important;
+    }
+    
+    .main-sidebar {
+        margin-top: 48px;
+    }
+    
+    [ng\:cloak],
+    [ng-cloak],
+    [data-ng-cloak],
+    [x-ng-cloak],
+    .ng-cloak,
+    .x-ng-cloak {
+        display: none !important;
+    }
+    
+    .loginSubmitBtn {
+        color: white;
+        background-color: #3c8dbc;
+    }
+    
+    .loginSubmitBtn:hover {
+        color: white;
+        background-color: #367fa9;
+    }
+    
+    .signInPanelBody {
+        border: 1px solid #3c8dbc;
+        border-bottom-right-radius: 3px;
+        border-bottom-left-radius: 3px;
+    }
+    
+    #loginPanelHeader {
+        margin-top: 5px;
+        color: white;
+    }
+    
+    .itemListHeader {
+        border-radius: 4px;
+        background-color: #3c8dbc;
+    }
+    
+    .loginPanelHeading {
+        height: 50px;
+        background-color: #3c8dbc;
+    }
+    
+    .signinPanel {
+        margin-top: 30px;
+    }
+    
+    .itemListHeader>tr>th {
+        color: white;
+    }
+    
+    .itemsListHeaderRow >th {
+        border: 1px solid #3c8dbc;
+    }
+    
+    .itemsList {
+        border: 2px solid #696969;
+        margin-left: -15px;
+    }
+    
+    #itemsBody>tr>td,
+    .itemsList>thead>tr>th {
+        border: 1px solid #3c8dbc;
+        text-align: center;
+    }
+    
+    .skin-blue .sidebar a {
+        color: white;
+    }
+    
+    .timingsList {
+        margin-left: 15px;
+    }
+    
+    .nav-pills>li>a {
+        padding-top: 1px;
+    }
+    /*.nav-pills>li {
+    margin-top: 5px;
+    border-radius: 5px;
+    height: 30px;
+    background-color: #f4f4f4;
+}*/
+    
+    .activeButton {
+        color: white;
+        background-color: #00a65a;
+    }
+    
+    .activeButtonAfternoon {
+        color: white;
+        background-color: #00a65a;
+    }
+    
+    .timings {
+        height: 150px;
+    }
+    
+    .morningTimingsArray[disabled],
+    .afternoonTimingsArray[disabled],
+    .eveningTimingsArray[disabled] {
+        background-color: #f5f5f5;
+        text-decoration: line-through;
+    }
+    
+    .morningTimingsArray[disabled]:hover,
+    .afternoonTimingsArray[disabled]:hover,
+    .eveningTimingsArray[disabled]:hover {
+        color: black;
+        background-color: #f5f5f5;
+        border: 0px solid white;
+    }
+    
+    .buttonTimings {
+        margin-right: 2px;
+        margin-top: 1px;
+        margin-bottom: 1px;
+    }
+    
+    .buttonTimings:focus {
+        background-color: #1abc9c;
+        color: white;
+    }
+    
+    .buttonTimings:hover {
+        border: 1px solid #1abc9c;
+        color: #1abc9c;
+    }
+    
+    .skin-blue .sidebar a:hover {
+        color: white;
+    }
+    
+    .doctorDetails {
+        margin-top: 5px;
+        width: 100%;
+        border: 1.2px solid #f39c12;
+    }
+    
+    .asideDoctorsHeader {
+        color: white;
+        margin-top: -22px;
+        margin-left: 10px;
+    }
+    
+    .asideHr {
+        margin-top: 1px;
+        width: 88%;
+        border: 0.5px solid #f39c12;
+    }
+    
+    .skin-blue .sidebar-menu>li>a {
+        border-left: 0px;
+    }
+    
+    #exTab2 h3 {
+        color: white;
+        background-color: #428bca;
+        padding: 5px 15px;
+    }
+    
+    .tabContents>li>a {
+        position: relative;
+        display: block;
+        padding: 10px 233px;
+    }
+    
+    .modalInfo {
+        color: black;
+        font-size: 12px;
+    }
+    
+    .modal-content {
+        width: 700px;
+    }
+    
+    #bookAppointmentLabel {
+        padding-left: 25px;
+        color: black;
+    }
+    
+    .nextForm {
+        margin-top: -30px;
+    }
+    
+    .modal-footer {
+        margin-top: 120px;
+        border-top: 0px;
+    }
+    
+    li.ui-timepicker-disabled {
+        color: #888;
+        cursor: default;
+    }
+    
+    .btn-group {
+        margin-top: 16px;
+    }
+    
+    .ui-timepicker-wrapper>ul.ui-timepicker-list>li.ui-timepicker-disabled {
+        color: #888;
+        cursor: default;
+    }
+    
+    .tabContents>li.active>a,
+    .tabContents>li.active>a:hover,
+    .tabContents>li.active>a:focus {
+        color: #555;
+        cursor: pointer;
+        background-color: white;
+        border: 3px solid #ddd;
+        border-bottom-color: red;
+        border-bottom-style: solid;
+        border-right-color: white;
+        border-left-color: white;
+        border-top-color: white;
+    }
+    
+    .modal {
+        color: black;
+    }
+    
+    .asideDoctorsHeader.selected {
+        color: red;
+    }
+    
+    #entryTypeBtn {
+        background-color: white;
+        color: black;
+        height: 35px;
+        width: 180px;
+        border-color: #d2d6de;
+    }
+    /* .dropdown-menu {
+        margin-left: 16px;
+    } */
+    
+    #modalCancelBookingsSearchBtn,
+    .cancelBookingsModalCloseBtn {
+        color: #00bd9c;
+        background-color: white;
+        border: 1px solid #00bd9c;
+    }
+    
+    .cancelBookingsModalCloseBtn {
+        border: 1px solid #00bd9c;
+    }
+    
+    #modalCancelBookingsSearchBtn:hover,
+    .cancelBookingsModalCloseBtn:hover {
+        color: white;
+        background-color: #00bd9c;
+    }
+    
+    .btn.addPatientBtn {
+        border: 1px solid #3c8dbc;
+        background-color: #3c8dbc;
+        color: white;
+    }
+    
+    .btn.doctorTimingsBtn {
+        border: 1px solid #3c8dbc;
+        background-color: #3c8dbc;
+        color: white;
+    }
+    
+    .btn.doctorTimingsBtn:hover {
+        color: white;
+        background-color: #3c8dbc;
+    }
+    
+    .btn.addPatientBtn:hover {
+        color: white;
+        background-color: #3c8dbc;
+    }
+    
+    .buttonsRow {
+        margin-right: 60px;
+    }
+    
+    .btn.cancelBookingsBtn {
+        border: 1px solid #3c8dbc;
+        background-color: #3c8dbc;
+        color: white;
+        margin-bottom: 10px;
+        margin-top: 15px;
+    }
+    
+    .patientManagement {
+        margin-top: 20px;
+    }
+    /*@media screen and (min-width:992px) {
+    .patientManagement {
+        position: fixed;
+    }
+}*/
+    /*@media screen and (min-width:992px) {
+    .main-sidebar {
+        
+        margin-top: -21px;
+    }
+}*/
+    
+    @media screen and (max-width:390px) {
+        #patientSearchInAppointments {
+            margin-top: 8px;
+        }
+    }
+    
+    .btn.patientSearchBtn {
+        border: 1px solid #00bd9c;
+        background-color: white;
+        color: #00bd9c;
+    }
+    
+    .btn.patientSearchBtn:hover {
+        color: white;
+        background-color: #00bd9c;
+    }
+    
+    .btn.cancelBookingsBtn:hover {
+        color: white;
+        background-color: #3c8dbc;
+    }
+    
+    .doctorTimingsBtn {
+        margin-left: 2px;
+        margin-bottom: 10px;
+        margin-top: 15px;
+    }
+    
+    .ng-hide {
+        height: 0;
+    }
+    
+    .doctorSessionSelect {
+        margin-right: 8px;
+    }
+    
+    .deleteDoctorSessionSelect {
+        margin-right: 8px;
+    }
+    
+    .btn.neutral {
+        margin-bottom: 5px;
+        background-color: #d9d9d9;
+        color: rgba(46, 67, 89, .65);
+    }
+    
+    .btn.neutral:hover {
+        background-color: #13d8b6;
+        color: white;
+    }
+    
+    #inputPatientPhoneNumberSearch,
+    #searchDate {
+        padding-left: 12px;
+        height: 33px;
+        margin-top: 18px;
+        margin-right: 8px;
+        border-radius: 4px;
+        border: 1px solid #3c8dbc;
+    }
+    
+    .btn.checkin {
+        margin-bottom: 5px;
+        background-color: #00bd9c;
+    }
+    
+    .btn.checkin:hover {
+        background-color: #13d8b6;
+    }
+    
+    .btn-default:hover {
+        background-position: 0 -32px;
+    }
+    
+    .btn.warning {
+        width: 168px;
+        background-color: rgba(255, 109, 111, .3);
+        color: #ff6d6f;
+    }
+    
+    .box {
+        border-top: 0px solid white;
+    }
+    
+    .btn.warning:hover {
+        background-color: #ff6d6f;
+        color: #fff;
+    }
+    
+    .neutral:hover {
+        background-color: #13d8b6;
+    }
+    
+    .deleteSection {
+        margin-top: 10px;
+    }
+    
+    .doctorTimings {
+        margin-bottom: 10px;
+    }
+    
+    .doctorTimings.ng-hide-add {
+        -webkit-animation: 0.1s hide;
+        animation: 0.1s hide;
+    }
+    
+    @keyframes hide {
+        0% {
+            opacity: 1;
+            transform: scale(1);
+        }
+        30% {
+            transform: scale(1.02);
+        }
+        100% {
+            opacity: 0;
+            transform: scale(0.5);
+        }
+    }
+    
+    @-webkit-keyframes hide {
+        0% {
+            opacity: 1;
+            transform: scale(1);
+        }
+        30% {
+            transform: scale(1.02);
+        }
+        100% {
+            opacity: 0;
+            transform: scale(0.5);
+        }
+    }
+    
+    .doctorTimings.ng-hide-remove {
+        -webkit-animation: 0.3s show;
+        animation: 0.3s show;
+    }
+    
+    @keyframes show {
+        0% {
+            opacity: 0;
+            transform: scale(0.5);
+        }
+        70% {
+            transform: scale(1.02);
+        }
+        100% {
+            opacity: 1;
+            transform: scale(1);
+        }
+    }
+    
+    @-webkit-keyframes show {
+        0% {
+            opacity: 0;
+            transform: scale(0.5);
+        }
+        70% {
+            transform: scale(1.02);
+        }
+        100% {
+            opacity: 1;
+            transform: scale(1);
+        }
+    }
+    /* .modal-Form-control {
+    padding-right: 20px;
+} */
+    
+    .disableTimeBtn {
+        pointer-events: none;
+    }
+    
+    .icon-bar {
+        background-color: white;
+    }
+    
+    .navbar-default {
+        border-bottom-color: #3c8dbc !important;
+        background-image: none !important;
+        background-color: #3c8dbc !important;
+    }
+    
+    #dboticaInHeader {
+        cursor: pointer;
+        color: white;
+        font-weight: 700;
+    }
+    
+    .navbarLinks {
+        color: white;
+        cursor: pointer;
+    }
+    
+    .patient-form-inline {
+        padding-bottom: 8px;
+    }
+    
+    .patient-form-inline .patient-form-group {
+        padding-right: 50px;
+    }
+    
+    @media only screen and (min-width:995px) {
+        .logoutLink {
+            margin-right: 10px;
+        }
+    }
+    
+    @media (max-width: 933px) {
+        .navbar-header {
+            float: none;
+        }
+        .navbar-left,
+        .navbar-right {
+            float: none !important;
+        }
+        .navbar-toggle {
+            display: block;
+        }
+        .navbar-collapse {
+            border-top: 1px solid transparent;
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1);
+        }
+        .navbar-static-top {
+            top: 0;
+            border-width: 0 0 1px;
+        }
+        .navbar-collapse.collapse {
+            display: none!important;
+        }
+        .navbar-nav {
+            float: none!important;
+            margin-top: 7.5px;
+        }
+        .navbar-nav>li {
+            float: none;
+        }
+        .navbar-nav>li>a {
+            padding-top: 10px;
+            padding-bottom: 10px;
+        }
+        .collapse.in {
+            display: block !important;
+        }
+    }
+    /*  @media only screen and (max-width: 974px) {
+       .navbarLinks {
+           margin-right: 0px;
+           font-size: 14px;
+           padding-left: 0px;
+           padding-right: 0px;
+       }
+   }
+   
+   @media only screen and (max-width: 974px) {
+       .collapse>.nav>li>a {
+           padding-right: 28px;
+           padding-left: 0px;
+       }
+   }
+   
+   @media only screen and (max-width: 974px) {
+       .navbar-collapse>.navbar-nav>li {
+           padding-left: 2px;
+           padding-right: 2px;
+           margin-left: -12px;
+           margin-right: -12px;
+       }
+   } */
+    
+    .activeSectionBlack,
+    .activeAdminLi {
+        color: #3c8dbc !important;
+        background-color: white !important;
+    }
+    
+    .activeAdminLi>a {
+        color: #3c8dbc !important;
+        cursor: pointer !important;
+    }
+    
+    .activeSectionBlue {
+        color: white !important;
+        background-color: #3c8dbc !important;
+    }
+    
+    .navbar-collapse.in {
+        overflow: hidden;
+    }
+    /*#doctorName {
+    font-style: bold;
+    font-size: 22px;
+    color: #49b1d1;
+}*/
+    
+    li {
+        margin-left: 5px;
+        list-style-type: none;
+    }
+    
+    .doctorsList:hover,
+    .doctorsList>a:hover {
+        cursor: pointer;
+        color: #00bd9c;
+    }
+    
+    .doctorInList:hover {
+        color: #00bd9c;
+    }
+    
+    .docList {
+        margin-top: 25px;
+    }
+    
+    .doctorInList {
+        color: #00bd9c;
+    }
+    
+    .docList>li>a:hover {
+        margin-bottom: -5px;
+    }
+    
+    .docList>li {
+        height: 70px;
+        /*margin-top: -5px;*/
+    }
+    
+    .docLinks {
+        cursor: pointer;
+    }
+    
+    .docLinks:hover {
+        margin-top: 1px;
+        margin-bottom: 1px !important;
+        border-radius: 4px !important;
+        margin-right: 1px !important;
+        color: #3c8dbc !important;
+    }
+    
+    .activeLi,
+    .activeLi:hover {
+        margin-top: 1px !important;
+        margin-right: 2px;
+        color: #3c8dbc !important;
+        cursor: pointer !important;
+        border-radius: 4px !important;
+        background-color: white !important;
+    }
+    
+    .docList>li.active>a,
+    .docList>li.active>a:hover {
+        margin-bottom: -5px;
+        color: #fff;
+        background-color: red;
+        border-top-color: white;
+    }
+    
+    .doctorInList:hover {
+        color: #00bd9c;
+    }
+    
+    .patientsTable>tbody>tr>td {
+        border-top: 1px solid #ddd;
+    }
+    
+    .datepicker {
+        width: 180px;
+        opacity: 1;
+        z-index: 1150 !important;
+    }
+    
+    #inputPatientGender {
+        width: 180px;
+    }
+    
+    .ui-timepicker-input {
+        height: 26px;
+    }
+    
+    #sessionDatepicker {
+        height: 26px;
+    }
+    
+    .ui-timepicker-wrapper {
+        overflow-y: auto;
+        height: 150px;
+        width: 10.5em;
+        background: #fff;
+        border: 1px solid #ddd;
+        outline: none;
+    }
+    
+    .startTimeBox,
+    .endTimeBox {
+        margin-top: 10px;
+    }
+    
+    .ui-timepicker-list li {
+        margin-left: -38px;
+        padding: 3px 0 3px 30px;
+        cursor: pointer;
+        color: #000;
+        list-style: none;
+    }
+    
+    .ui-timepicker-list li:hover {
+        background-color: #f5f5f5;
+    }
+    /*.time {
+    opacity: 1;
+    z-index: 1150 !important;
+}*/
+    
+    .datepicker.dropdown-menu {
+        width: 250px;
+    }
+    
+    .datePara {
+        margin-right: 10px;
+    }
+    
+    .dropdown>button {
+        margin-left: 5px;
+        margin-right: 5px;
+    }
+    
+    .dropdownOptions {
+        padding-right: 15px;
+        margin-left: 1px;
+        width: 100px;
+    }
+    
+    .doctorLine {
+        margin-top: 5px;
+        margin-bottom: 5px;
+    }
+    
+    .viewDetailsLink {
+        padding-left: 50px;
+    }
+    
+    a {
+        font-size: 16px;
+    }
+    
+    .tabActive {
+        font-size: 18px;
+        color: white;
+    }
+    
+    .patientDetails {
+        margin-bottom: 5px;
+    }
+    
+    .patientsTable {
+        margin-top: 5px;
+    }
+    
+    .patientsListHeaderRow {
+        border-radius: 4px;
+        color: white;
+        background-color: #3c8dbc;
+        font-size: 15px;
+    }
+    
+    #actionsOnPatient {
+        text-align: center;
+    }
+    
+    .patientRow {
+        border-bottom: 2px solid #cccccc;
+    }
+    
+    #actions {
+        text-align: center;
+        width: 40%;
+    }
+    
+    .content-wrapper {
+        padding-left: 15px;
+        margin-top: -20px;
+        background-color: white;
+    }
+    
+    .box.box-primary {
+        border-top-color: #f5f5f5;
+    }
+    
+    .details {
+        height: 60px;
+    }
+    
+    #assistantLoginForm {
+        padding-top: 20px;
+        background-color: #f5f5f5;
+    }
+    
+    .container-fluid {
+        padding-right: 0px;
+    }
+    
+    .navbar-default .navbar-nav > li > a {
+        font-size: 15px;
+        color: white;
+    }
+    
+    .navbar-default .navbar-nav > li > a:hover {
+        font-size: 15px;
+        color: white;
+    }
+    
+    .biodata-title {
+        padding-bottom: 8px;
+        padding-left: 15px;
+    }
+    
+    #bs-example-navbar-collapse-1 {
+        background-color: #3c8dbc;
+    }
+    
+    #logo {
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        padding-top: 0px;
+        background-color: #3c8dbc;
+        color: #fff;
+        font-size: 20px;
+        line-height: 50px;
+        text-align: center;
+        width: 230px;
+    }
+    
+    .logo-lg {
+        display: block;
+    }
+    
+    .logo-mini {
+        display: none;
+    }
+    
+    .navbar-inverse {
+        color: white;
+        background-color: #3c8dbc;
+        border-color: #3c8dbc;
+        background-image: none !important;
+    }
+    /*#loginBtn {
+    margin-left: 50%;
+}*/
+    /* @media only screen and (min-width: 956px) {
+    .container-fluid > .navbar-header,
+    .container-fluid > .navbar-collapse {
+        margin-right: 0 !important;
+        margin-left: 0 !important;
+    }
+}
+
+@media only screen and (min-width: 956px) {
+    .navbar-header {
+        float: left !important;
+    }
+}
+
+@media only screen and (min-width: 956px) {
+    .navbar-toggle {
+        display: none !important;
+    }
+}
+
+@media only screen and (min-width: 956px) {
+    .navbar-collapse.collapse {
+        display: block !important;
+        height: auto !important;
+        padding-bottom: 0 !important;
+        overflow: visible !important;
+    }
+}
+
+@media only screen and (min-width: 956px) {
+    .navbar-collapse {
+        width: auto !important;
+        border-top: 0 !important;
+        -webkit-box-shadow: none !important;
+        box-shadow: none !important;
+    }
+} */
+    
+    #loginHorizontal {
+        width: 68%;
+        border: 1.2px solid #f39c12;
+    }
+    
+    .skin-blue .wrapper {
+        background-color: #f5f5f5;
+    }
+    /*.skin-blue .main-sidebar {
+    background-color: #f5f5f5;
+}*/
+    
+    #body {
+        background-color: white;
+    }
+    
+    .errorMsg {
+        color: red;
+    }
+    /*hr {
+    width: 98%;
+    border: 1.2px solid #f39c12;
+}*/
+    /* Have to set height explicity on ui-view 
+to prevent collapsing during animation*/
+    /*  .well[ui-view] {
+       height: 65px;
+   }
+   
+   .ui-view-container {
+       position: relative;
+   }
+   
+   [ui-view].ng-enter,
+   [ui-view].ng-leave {
+       position: absolute;
+       left: 0;
+       right: 0;
+       -webkit-transition: all .3s linear;
+       -moz-transition: all .3s linear;
+       -o-transition: all .3s linear;
+       transition: all .3s linear;
+   }
+   
+   [ui-view].ng-enter {
+       opacity: 0;
+       -webkit-transform: scale3d(0.9, 0.9, 0.9);
+       -moz-transform: scale3d(0.9, 0.9, 0.9);
+       transform: scale3d(0.9, 0.9, 0.9);
+   }
+   
+   [ui-view].ng-enter-active {
+       opacity: 1;
+       -webkit-transform: scale3d(1, 1, 1);
+       -moz-transform: scale3d(1, 1, 1);
+       transform: scale3d(1, 1, 1);
+   }
+   
+   [ui-view].ng-leave {
+       opacity: 1;
+       padding-left: 0px;
+       -webkit-transform: translate3d(0, 0, 0);
+       -moz-transform: translate3d(0, 0, 0);
+       transform: translate3d(0, 0, 0);
+   }
+   
+   [ui-view].ng-leave-active {
+       opacity: 0;
+       padding-left: 100px;
+       -webkit-transform: translate3d(100px, 0, 0);
+       -moz-transform: translate3d(100px, 0, 0);
+       transform: translate3d(100px, 0, 0);
+   }
+    */

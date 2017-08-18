@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>DBotica</title>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta charset="utf-8" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <!-- Bootstrap 3.3.5 -->
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="//code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="dist/css/AdminLTE.css">
+    <!-- AdminLTE Skins. Choose a skin from the css/skins
+         folder instead of downloading all of them to reduce the load. -->
+    <link rel="stylesheet" href="dist/css/skins/_all-skins.min.css">
+    <link rel="stylesheet" href="entryPrescription.css">
+    <script src="plugins/sweetalert/dist/sweetalert.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="plugins/sweetalert/dist/sweetalert.css">
+    <!--   date picker-->
+</head>
+
+<body class="hold-transition skin-blue sidebar-mini">
+    <div class="register-box-body" id="register-box-body">
+        <!-- <div class="row">
+            <div class="col-md-6">
+                <label style="margin-left:-20px;">Patients:</label>
+            </div>
+        </div> -->
+        <div id="registerPatientInEntry">
+            <div class="patientsListOfNumber">
+            </div>
+            <div class="myForm">
+                <ul style="list-style-type:none;" id="familypatientsListOfNumber" class="familypatientsListOfNumber"></ul>
+            </div>
+            <br>
+            <div class="row">
+                <p class="patient-details-message">Please Enter Family Member Details</p>
+                <p id="login-box-msg" class="login-box-msg">Update Patient details</p>
+            </div>
+            <form id="patient-register" method="post">
+                <div class="form-group has-feedback">
+                    <input type="text" class="form-control" id="patient-reg-name" placeholder="Full name">
+                    <span class="glyphicon glyphicon-user form-control-feedback"></span>
+                </div>
+                <div class="form-group has-feedback">
+                    <input type="email" class="form-control" id="patient-reg-email" placeholder="Email">
+                    <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+                </div>
+                <div class="form-group has-feedback">
+                    <input type="text" class="form-control" id="patient-reg-phone" placeholder="Mobile Number">
+                    <span class="glyphicon glyphicon-phone form-control-feedback"></span>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="input-group radioBtnGrp">
+                            <span class="input-group-addon">
+                      <input type="radio" value="MALE" id="genderMale" name="gender"/>
+                    </span>
+                            <input type="text" class="form-control" placeholder="Male" disabled="true">
+                            <span class="input-group-addon">
+                      <input type="radio" value="FEMALE" id="genderFemale" name="gender"/>
+                    </span>
+                            <input type="text" style="" class="form-control" placeholder="Female" disabled="true">
+                        </div>
+                    </div>
+                    <!-- /input-group -->
+                </div>
+                <br>
+                <div class="row ageGenderRow">
+                    <div class="col-xs-6">
+                        <input type="text" class="form-control" placeholder="Age" id="patient-reg-age">
+                    </div>
+                    <div class="col-xs-2"></div>
+                    <div class="col-xs-6">
+                        <select type="text" class="form-control" placeholder="Female" id="patient-reg-bloodgrp">
+                            <option value="O_POSITIVE">O+</option>
+                            <option value="O_NEGATIVE">O-</option>
+                            <option value="A_POSITIVE">A+</option>
+                            <option value="A_NEGATIVE">A-</option>
+                            <option value="B_POSITIVE">B+</option>
+                            <option value="B_NEGATIVE">B-</option>
+                            <option value="AB_POSITIVE">AB+</option>
+                            <option value="AB_NEGATIVE">AB-</option>
+                            <option value="OTHER">OTHER</option>
+                        </select>
+                    </div>
+                </div>
+                </br>
+                <div class="form-group has-feedback allergyTxtBox">
+                    <input type="text" class="form-control" id="patient-reg-allergy-disp" disabled="true" placeholder="Allergies">
+                </div>
+                <div class="row allergyTxtBtn">
+                    <div class="col-xs-7">
+                        <input type="text" class="form-control" id="patient-reg-allergy" placeholder="Allergic to" />
+                    </div>
+                    <div class="col-xs-4">
+                        <div type="submit" id="patient-register-alr-btn" class="btn btn-primary btn-block btn-flat" style="margin-bottom:60%">Add</div>
+                    </div>
+                </div>
+                <!-- <div class="row">
+        <div class="col-xs-4">
+        </div>
+        <div class="col-xs-4">
+            <div type="submit" id="patient-register-btn" class="btn btn-primary btn-block btn-flat" style="margin-top:-25px;">Update</div>
+        </div>
+    </div> -->
+                <div type="submit" id="patient-register-btn" style="margin-top:-5px;margin-bottom:5px;" class="btn btn-primary btn-block btn-flat">Update</div>
+                <div type="submit" id="patient-addFamily-btn" class="btn btn-primary btn-block btn-flat">Add Family Members</div>
+                <a id="patientDashBoardLink" class="pull-right" target="_blank" href="patientDashboard.html">Patient Dashboard</a>
+            </form>
+        </div>
+    </div>
+    </div>
+    <!-- /.form-box -->
+</body>
+<script type="text/javascript">
+$(document).ready(function() {
+    /*$('#registerPatientInEntry').jScrollPane({
+        horizontalGutter:5,
+        verticalGutters: 5,
+        'showArrows': false
+    });
+    $('.jspDrag').hide();
+    $('.jspScrollable').mouseenter(function() {
+        $(this).find('.jspDrag').stop(true, true).fadeIn('slow');
+    });
+    $('.jspScrollable').mouseleave(function() {
+        $(this).find('.jspDrag').stop(true, true).fadeOut('slow');
+    });*/
+    onLoadTasks();
+});
+var cookieLength;
+
+
+function onLoadTasks() {
+    if (localStorage.getItem("isLoggedIn") == "false") {
+        window.location.replace("login.html");
+    }
+
+    try {
+        $("#patient-addFamily-btn").hide();
+        $(".patient-details-message").hide();
+        var newPhoneNumber = $.cookie('newPatientPhoneNumber');
+        console.log("num is---" + newPhoneNumber);
+        var data1 = $.parseJSON($.cookie('currentPatientInfo'));
+
+        console.log("data in try is------", data1);
+        var emptyArray = [];
+        if (data1 !== null) {
+            cookieLength = data1.length;
+            $.cookie('patientsInRegister', JSON.stringify(data1));
+        } else {
+            $.cookie('patientsInRegister', JSON.stringify(emptyArray));
+        }
+        var datacheck = $.parseJSON($.cookie('patientsInRegister'));
+        console.log("data in try check is is------", datacheck);
+        if ($.cookie('currentPatientInfo') != 'null') {
+            var patientsCountOfThatNumber = data1.length;
+            localStorage.setItem("idOfPatientInDashBoard", data1[0].id);
+            console.log("patients count in register----" + patientsCountOfThatNumber);
+            if (patientsCountOfThatNumber >= 1) {
+                $("#patient-addFamily-btn").show();
+                console.log("in if of register patient----");
+
+                $('.patientsListOfNumber').append('<div class="row"><div class="col-md-6"><label style="margin-left:-20px;">Patients:</label></div></div>');
+                for (var count = 0; count < patientsCountOfThatNumber; count++) {
+                    console.log("in for ----------");
+                    $('.familypatientsListOfNumber').append('<li class="patientsLi" style="text-align:left;"><input class="patientRadio" id="patient' + count + '"  type="radio" class="patientsRadioButton" value="' + data1[count]['firstName'] + '"name="patientOfThatNumber"><label class="patientLabel" for="patient' + count + '">' + data1[count]['firstName'] + '</label></li>');
+                }
+                $('#patient0').prop('checked', true);
+            }
+
+            console.log("data in register patient-----", data1);
+
+            if (data1.length != 0) {
+                $('#patient-reg-name').val(data1[0]['firstName']);
+                $('#patient-reg-email').val(data1[0]['emailId']);
+                $('#patient-reg-phone').val(data1[0]['phoneNumber']);
+                if (data1[0]['gender'] == "MALE") {
+                    $("#genderMale").prop("checked", true)
+                } else {
+                    $("#genderFemale").prop("checked", true)
+                }
+                $('#patient-reg-age').val(data1[0]['age']);
+                $('#patient-reg-bloodgrp').val(data1[0]['bloodGroup']);
+                $('#patient-reg-allergy-disp').val(data1[0]['drugAllergy']);
+            }
+        }
+        if ($.cookie('currentPatientInfo') == 'null') {
+            $('#patientDashBoardLink').hide();
+            localStorage.setItem("idOfPatientInDashBoard", "");
+            $('#patient-reg-phone').val(newPhoneNumber);
+        }
+
+    } catch (e) {
+        console.log("error occured ", e);
+    }
+}
+
+$("#patient-addFamily-btn").click(function() {
+    console.log("in add family button----");
+    var data1 = $.parseJSON($.cookie('currentPatientInfo'));
+    $("#login-box-msg").hide();
+    $(".patient-details-message").show();
+    $('#patient-reg-name').val("");
+    $('#patient-reg-email').val("");
+    $('#patient-reg-phone').val(data1[0]['phoneNumber']);
+    $("#genderMale").prop("checked", true);
+    $("#genderFemale").prop("checked", false);
+    $('#patient-reg-age').val("");
+    $('#patient-reg-bloodgrp').val("");
+    $('#patient-reg-allergy-disp').val("");
+    $('#patient-register-btn').text("Add Member");
+});
+
+$('#patient-register-alr-btn').click(function() {
+    if ($('#patient-reg-allergy-disp').val() != '') {
+
+        var text = $('#patient-reg-allergy-disp').val();
+        if ($('#patient-reg-allergy').val() != '') {
+            text = text + ',' + $('#patient-reg-allergy').val();
+            $('#patient-reg-allergy-disp').val(text);
+            $('#patient-reg-allergy').val("");
+        }
+    } else {
+        text = $('#patient-reg-allergy').val();
+        $('#patient-reg-allergy-disp').val(text);
+        $('#patient-reg-allergy').val("");
+
+    }
+
+});
+
+/*$("input[name='patientOfThatNumber']").on('change', '.patientsRadioButton', function() {*/
+$(".myForm").on('click', '.patientRadio', function() {
+    console.log("in add family button----");
+    var radioSelected = this.id;
+    var radioIndex = radioSelected.slice(-1);
+    var patientInfoCookie = $.cookie('patientsInRegister');
+    var data1 = [];
+    if (patientInfoCookie.length != null) {
+        try {
+            data1 = $.parseJSON(patientInfoCookie);
+        } catch (e) {}
+    }
+    var emptyArray = [];
+    emptyArray.push(data1[radioIndex]);
+    $.cookie('currentPatientInfo', JSON.stringify(emptyArray));
+    var currentInfo = $.cookie('currentPatientInfo');
+    console.log(":current info value is-------", currentInfo);
+    var data6 = [];
+    if (currentInfo.length != null) {
+        try {
+            data6 = $.parseJSON(currentInfo);
+        } catch (e) {}
+    }
+    console.log("data6 is-----", data6);
+    updatePatientFields();
+    if (data1.length != 0) {
+        localStorage.setItem("idOfPatientInDashBoard", data1[radioIndex]['id']);
+        $('#patient-reg-name').val(data1[radioIndex]['firstName']);
+        $('#patient-reg-email').val(data1[radioIndex]['emailId']);
+        $('#patient-reg-phone').val(data1[radioIndex]['phoneNumber']);
+        if (data1[radioIndex]['gender'] == "MALE") {
+            $("#genderMale").prop("checked", true)
+        } else {
+            $("#genderFemale").prop("checked", true)
+        }
+        $('#patient-reg-age').val(data1[radioIndex]['age']);
+        $('#patient-reg-bloodgrp').val(data1[radioIndex]['bloodGroup']);
+        $('#patient-reg-allergy-disp').val(data1[radioIndex]['drugAllergy']);
+    }
+});
+
+$('#patient-register-btn').click(function() {
+    updatePatientDetails();
+});
+
+function updatePatientDetails(callbackStr) {
+    console.log("pateint update click");
+    var patientInfoCookie = $.cookie('patientsInRegister');
+    var data1 = [];
+    if (patientInfoCookie.length != null) {
+        try {
+            data1 = $.parseJSON(patientInfoCookie);
+        } catch (e) {
+            // alert(e);
+        }
+    }
+    var requestString = "";
+    var updatedObject;
+    var radiobuttonclickedindex;
+    if (!!data1 && data1.length != 0) {
+        var display = $(".patient-details-message").css('display') == 'none';
+        var valuecheck = ($('input[id=patient0]:checked', '.myForm').val() == data1[0]['firstName']);
+        if (($(".patient-details-message").css('display') == 'none') && ($('input[id=patient0]:checked', '.myForm').val() == data1[0]['firstName'])) {
+            var dataindex = $.parseJSON($.cookie('patientsInRegister'));
+            dataindex.splice(0, 1);
+            $.cookie('patientsInRegister', JSON.stringify(dataindex));
+            data1[0]['gender'] = $('input[name=gender]:checked').val();
+            data1[0]['firstName'] = $('#patient-reg-name').val();
+            data1[0]['emailId'] = $('#patient-reg-email').val();
+            data1[0]['phoneNumber'] = $('#patient-reg-phone').val();
+            data1[0]['age'] = $('#patient-reg-age').val();
+            data1[0]['bloodGroup'] = $('#patient-reg-bloodgrp').val();
+            data1[0]['drugAllergy'] = $('#patient-reg-allergy-disp').val();
+            data1[0]['primaryPatient'] = true;
+            requestString = JSON.stringify(data1[0]);
+        } else {
+            if ($('#patient-register-btn').text() == "Add Member") {
+                requestString = JSON.stringify({
+                    'gender': $('input[name=gender]:checked').val(),
+                    'firstName': $('#patient-reg-name').val(),
+                    'emailId': $('#patient-reg-email').val(),
+                    'phoneNumber': $('#patient-reg-phone').val(),
+                    'age': $('#patient-reg-age').val(),
+                    'bloodGroup': $('#patient-reg-bloodgrp').val(),
+                    'drugAllergy': $('#patient-reg-allergy-disp').val(),
+                    'primaryPatient': false
+                });
+            } else {
+
+                var radiobuttonclicked = $('input[name=patientOfThatNumber]:checked', '.myForm').attr('id');
+                radiobuttonclickedindex = radiobuttonclicked.slice(-1);
+
+                if (radiobuttonclickedindex == 0) {
+                    var dataindex = $.parseJSON($.cookie('patientsInRegister'));
+
+                    dataindex.splice(0, 1);
+
+                    $.cookie('patientsInRegister', JSON.stringify(dataindex));
+                    data1[radiobuttonclickedindex]['gender'] = $('input[name=gender]:checked').val();
+                    data1[radiobuttonclickedindex]['firstName'] = $('#patient-reg-name').val();
+                    data1[radiobuttonclickedindex]['emailId'] = $('#patient-reg-email').val();
+                    data1[radiobuttonclickedindex]['phoneNumber'] = $('#patient-reg-phone').val();
+                    data1[radiobuttonclickedindex]['age'] = $('#patient-reg-age').val();
+                    data1[radiobuttonclickedindex]['bloodGroup'] = $('#patient-reg-bloodgrp').val();
+                    data1[radiobuttonclickedindex]['drugAllergy'] = $('#patient-reg-allergy-disp').val();
+                    data1[radiobuttonclickedindex]['primaryPatient'] = true;
+                    requestString = JSON.stringify(data1[radiobuttonclickedindex]);
+
+                } else {
+
+                    var dataindex = $.parseJSON($.cookie('patientsInRegister'));
+
+                    dataindex.splice(radiobuttonclickedindex, 1);
+
+                    $.cookie('patientsInRegister', JSON.stringify(dataindex));
+                    data1[radiobuttonclickedindex]['gender'] = $('input[name=gender]:checked').val();
+                    data1[radiobuttonclickedindex]['firstName'] = $('#patient-reg-name').val();
+                    data1[radiobuttonclickedindex]['emailId'] = $('#patient-reg-email').val();
+                    data1[radiobuttonclickedindex]['phoneNumber'] = $('#patient-reg-phone').val();
+                    data1[radiobuttonclickedindex]['age'] = $('#patient-reg-age').val();
+                    data1[radiobuttonclickedindex]['bloodGroup'] = $('#patient-reg-bloodgrp').val();
+                    data1[radiobuttonclickedindex]['drugAllergy'] = $('#patient-reg-allergy-disp').val();
+                    data1[radiobuttonclickedindex]['primaryPatient'] = false;
+                    requestString = JSON.stringify(data1[radiobuttonclickedindex]);
+                }
+            }
+
+
+        }
+    } else {
+        console.log("in first if else----");
+        requestString = JSON.stringify({
+            'gender': $('input[name=gender]:checked').val(),
+            'firstName': $('#patient-reg-name').val(),
+            'emailId': $('#patient-reg-email').val(),
+            'phoneNumber': $('#patient-reg-phone').val(),
+            'age': $('#patient-reg-age').val(),
+            'bloodGroup': $('#patient-reg-bloodgrp').val(),
+            'drugAllergy': $('#patient-reg-allergy-disp').val(),
+            'primaryPatient': true
+        });
+    }
+
+    console.log("request entity before update is----", requestString);
+    var requestStringObject = $.parseJSON(requestString);
+    console.log("request entity object is----", requestStringObject);
+    if (requestStringObject.firstName == "") {
+        swal({
+            title: "Error",
+            text: "Please Enter Patient Name to update",
+            type: "error",
+            confirmButtonText: "OK",
+            allowOutsideClick: true
+        });
+
+    } else {
+        $.ajax({
+            type: "POST",
+            url: "http://localhost:8081/dbotica-spring/doctor/addPatient",
+            beforeSend: function(xhr) {
+                xhr.setRequestHeader("Content-Type", "application/json");
+                xhr.setRequestHeader("Accept", "application/json");
+            },
+            xhrFields: {
+                withCredentials: true
+            },
+            data: requestString,
+            success: function(response) {
+                var errorCode = response.errorCode;
+                if (!!errorCode) {
+                    switch (errorCode) {
+                        case "NO_USER_LOGGED_IN":
+                            localStorage.setItem("isLoggedIn", false);
+                            swal({
+                                    title: "Error",
+                                    text: "You are not logged into your account. Kindly login again to view this page",
+                                    type: "error",
+                                    confirmButtonText: "OK",
+                                    allowOutsideClick: true
+                                },
+                                function() {
+                                    localStorage.setItem("isLoggedIn", false);
+                                    window.location.replace("login.html");
+                                }
+                            );
+                            break;
+                    }
+                }
+
+                $.cookie('currentPatientInfo', response.response);
+
+                updatedObject = $.parseJSON(response.response);
+                try {
+                    addPatientObjecttoIndexedDB(updatedObject[0]);
+                } catch (e) {
+
+                }
+
+                swal({
+                    title: "Success",
+                    text: "Patient details successfully updated.",
+                    type: "success",
+                    confirmButtonText: "OK",
+                    allowOutsideClick: true,
+                }, function() {
+                    console.log("sdhsdfsdsd");
+                    console.log("arg 0 is--" + arguments[0]);
+                    if (callbackStr == "savePrescription") {
+                        console.log("sdhsd");
+                        $('#prescription-save-cont').click();
+                        console.log("sdhsd");
+                    }
+                });
+                updatePatientFields();
+                var patientInfoCookieUpdated = $.parseJSON($.cookie('patientsInRegister'));
+                localStorage.setItem("idOfPatientInDashBoard", updatedObject[0].id);
+                $("#patientDashBoardLink").show();
+
+                if ($('.familypatientsListOfNumber').is(':empty')) {
+                    radiobuttonclickedindex = 0;
+                } else {
+                    if (($('#patient-register-btn').text() == "Add Member")) {
+                        radiobuttonclickedindex = patientInfoCookieUpdated.length;
+                    } else {
+                        var radiobuttonclickedrequired = $('input[name=patientOfThatNumber]:checked', '.myForm').attr('id');
+                        radiobuttonclickedindex = radiobuttonclickedrequired.slice(-1);
+                        console.log("in check");
+                        var value = $('input[id=patient' + radiobuttonclickedindex + ']:checked', '.myForm').val();
+                        console.log("value is---", value);
+                        $('label[for=patient' + radiobuttonclickedindex + ']').html(updatedObject[0]['firstName']);
+                    }
+                }
+
+                patientInfoCookieUpdated.splice(radiobuttonclickedindex, 0, updatedObject[0]);
+                if (patientInfoCookieUpdated.length == 1 && $('.familypatientsListOfNumber').is(':empty')) {
+                    $('.patientsListOfNumber').append('<div class="row"><div class="col-md-6"><label style="margin-left:-20px;">Patients:</label></div></div>');
+                    $('.familypatientsListOfNumber').append('<li class="patientsLi" style="text-align:left;"><input class="patientRadio" id="patient' + 0 + '"  type="radio" class="patientsRadioButton" value="' + updatedObject[0]['firstName'] + '"name="patientOfThatNumber"><label class="patientLabel">' + updatedObject[0]['firstName'] + '</label></li>');
+                    $('#patient0').prop('checked', true);
+
+                }
+                $.cookie('patientsInRegister', JSON.stringify(patientInfoCookieUpdated));
+
+                var cookieLengthOfUpdated = patientInfoCookieUpdated.length - 1;
+                $("#patient-addFamily-btn").show();
+                if (($('#patient-register-btn').text() == "Add Member")) {
+                    $('.familypatientsListOfNumber').append('<li class="patientsLi" style="text-align:left;"><input class="patientRadio" id="patient' + cookieLengthOfUpdated + '"  type="radio" class="patientsRadioButton" value="' + updatedObject[0]['firstName'] + '"name="patientOfThatNumber"><label class="patientLabel">' + updatedObject[0]['firstName'] + '</label></li>');
+                    $('#patient' + cookieLengthOfUpdated).prop('checked', true);
+                }
+                $("#login-box-msg").show();
+                $(".patient-details-message").hide();
+
+                $('#patient-register-btn').text("Update Details");
+
+            }
+        });
+    } //ajax
+};
+</script>
+</script>

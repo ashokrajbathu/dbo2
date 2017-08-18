@@ -1,0 +1,101 @@
+<div ng-controller="medicationController as medication">
+    <ul class="nav nav-tabs">
+        <li class="active"><a>Patient Medication</a></li>
+    </ul>
+    <div class="tab">
+        <div id="contentOfMedicationTab" class="tab-content activeTabContent">
+            <button class="btn mainAdminBtn" data-toggle="modal" data-target="#addMedicationModal">Add Medication</button>
+            <div id="addMedicationModal" class="modal fade" role="dialog">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title">Medication</h4>
+                        </div>
+                        <div class="modal-body">
+                            <form class="form-horizontal">
+                                <div class="form-group">
+                                    <!-- <label for="inputdrugName" class="col-sm-2 col-md-2 col-xs-2 control-label">Drug Name</label>
+                                    <div class="col-sm-7 col-md-7 col-xs-7">
+                                        <select ng-model="medication.newMedicine.drugName" name="drugName" id="drugName" class="form-control input-sm" style="width:100%;">
+                                            <option value="drugNameInModal">-Drug Name-</option>
+                                        </select>
+                                    </div> -->
+                                    <label for="inputDrugInMedication" class="col-md-2 col-sm-2 col-xs-2 control-label">Drug Name</label>
+                                    <div class="col-md-7 col-sm-7 col-xs-7">
+                                        <input auto-complete-medicines ng-model="medication.newMedicine.drugName" type="text" medication="66" ng-change="medication.medicineSearch()" class="form-control" id="inputDrugInMedication" placeholder="Drug Name">
+                                        <div id="medicinesDiv">
+                                            <ul style="z-index:1200;height:60px;" click-outside id="medicinesDropDown" ng-class="{'testDropDownActive':medication.dropdownActive}" class="dropdown-menu">
+                                                <li ng-click="medication.selectTestFromTheDropdown(medicineEntity)" ng-repeat="medicineEntity in medication.medicineNamesList">
+                                                    <a style="cursor:pointer;" ng-bind="medicineEntity.itemName"></a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputDays" class="col-sm-2 col-md-2 col-xs-2 control-label">Days</label>
+                                    <div class="col-sm-7 col-md-7 col-xs-7">
+                                        <input ng-model="medication.newMedicine.days" type="text" class="form-control" id="inputDays" placeholder="Days">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputQty" class="col-sm-2 col-md-2 col-xs-2 control-label">Qty(Per Day)</label>
+                                    <div class="col-sm-7 col-md-7 col-xs-7">
+                                        <input ng-model="medication.newMedicine.quantity" type="text" class="form-control" id="inputQty" placeholder="Qty">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputInstruction" class="col-sm-2 col-md-2 col-xs-2 control-label">Instruction</label>
+                                    <div class="col-sm-7 col-md-7 col-xs-7">
+                                        <textarea ng-model="medication.newMedicine.instructions" placeholder="Instruction" name="instructions" id="instructions" class="form-control input-sm" style="width:100%;" rows="2"></textarea>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputInstruction" class="col-sm-2 col-md-2 col-xs-2 control-label">Advice</label>
+                                    <div class="col-sm-7 col-md-7 col-xs-7">
+                                        <textarea ng-model="medication.newMedicine.advice" placeholder="Advice" name="advice" id="advice" class="form-control input-sm" style="width:100%;" rows="2"></textarea>
+                                    </div>
+                                </div>
+                                <div class="form-inline">
+                                    <div class="col-md-offset-2">
+                                        <button ng-click="medication.saveMedicationDetails()" class="btn mainAdminBtn">Save</button>
+                                        <button class="btn btn-default" data-dismiss="modal">Cancel</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <table class="table mainAdminTable table-hover table-striped">
+                <thead>
+                    <tr>
+                        <th>Medicine Name</th>
+                        <th>Instruction</th>
+                        <th>Advice</th>
+                        <th>Days</th>
+                        <th>Qty</th>
+                        <th>Prepared By</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody ng-if="patientMedication && medication.getData();">
+                    <tr ng-repeat="eventEntity in medication.patientEventsList">
+                        <td ng-bind="eventEntity.referenceDetails.medicineName"></td>
+                        <td ng-bind="eventEntity.referenceDetails.instructions"></td>
+                        <td ng-bind="eventEntity.referenceDetails.advice"></td>
+                        <td ng-bind="eventEntity.referenceDetails.days"></td>
+                        <td ng-bind="eventEntity.referenceDetails.quantity"></td>
+                        <td ng-bind="eventEntity.assistantName||medication.assistantName"></td>
+                        <td>
+                            <a ng-click="medication.removeParticularEvent(eventEntity,$index)" style="cursor:pointer;">Remove</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

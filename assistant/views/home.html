@@ -1,0 +1,37 @@
+<div ng-controller="homeCtrl" ng-cloak>
+    <nav class="navbar assistantNav navbar-default navbar-static-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button style="background-color:white;" type="button" aria-expanded="false" aria-controls="navbar" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a id="dboticaInHeader" class="navbar-brand">dbotica</a>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li ng-if="isVisibleNavs.patientManagement" ui-sref-active="activeAdminLi activeSectionBlack>a" ui-sref=".patientManagement"><a class="navbarLinks">Appointments</a></li>
+                    <li ng-if="isVisibleNavs.billManagement" ui-sref-active="activeAdminLi activeSectionBlack>a" ui-sref-active="activeAdminLi activeSectionBlack>a" id="BillingHeader" ui-sref=".billManagement"><a class="navbarLinks">Billing</a></li>
+                    <li id="mainInventoryLiActive" ng-if="isVisibleNavs.inventory" ui-sref-active="activeAdminLi activeSectionBlack>a" ui-sref=".inventory"><a class="navbarLinks">Inventory</a></li>
+                    <li ng-if="isVisibleNavs.admin" ui-sref-active="activeAdminLi activeSectionBlack>a" ui-sref=".admin"><a class="navbarLinks">Assistant</a></li>
+                    <li ng-if="isVisibleNavs.ipd" ui-sref-active="activeAdminLi activeSectionBlack>a" ui-sref=".ipd"><a class="navbarLinks">IPD</a></li>
+                    <li ng-if="isVisibleNavs.operator" ui-sref-active="activeAdminLi activeSectionBlack>a" ui-sref=".operator"><a class="navbarLinks">Operator</a></li>
+                    <li id="mainAdminLiActive" ui-sref-active-if='home.mainAdmin' ng-if="isVisibleNavs.mainAdmin" ui-sref-active="activeAdminLi activeSectionBlack>a" ui-sref=".mainAdmin"><a class="navbarLinks">Admin</a></li>
+                    <li ui-sref-active-if="home.nurse" id="nurseHeader" ng-if="isVisibleNavs.nurse" ui-sref-active="activeAdminLi activeSectionBlack>a" id="nurseHeader" ui-sref=".nurse"><a class="navbarLinks">Nurse</a></li>
+                    <!-- <li ng-if="isVisibleNavs.labs" ui-sref-active="activeAdminLi activeSectionBlack>a" ui-sref=".labs">
+                        <a class="navbarLinks">Labs</a>
+                    </li> -->
+                    <li id="insuranceActive" ui-sref-active-if-insurance="home.insurance" ui-sref-active="activeAdminLi activeSectionBlack>a" ng-if="isVisibleNavs.insurance" ui-sref=".insurance">
+                        <a class="navbarLinks">Insurance</a>
+                    </li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a class="logoutLink" style="color:white;cursor:pointer;" ng-click="logoutFromAssistant()">Logout</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</div>
+<div class="uiViewAnimation" ui-view autoscroll="false"></div>

@@ -1,0 +1,55 @@
+.nurseModuleMain {
+    margin-left: 10px;
+}
+
+#exampleNursePatientPhoneNumber {
+    width: 180px;
+}
+
+#phoneBtnInNurse {
+    height: 35px;
+    margin-top: -1px;
+}
+
+.patientDetailsBoxRowNurse {
+    margin-top: 20px;
+}
+
+.tooltip.customClass .tooltip-inner {
+    color: #880000;
+    background-color: #ffff66;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
+}
+
+
+/* Hide arrow */
+
+.tooltip.customClass .tooltip-arrow {
+    display: none;
+}
+
+@media only screen and (max-width:991px) {
+    #patientEventsDropdown {
+        margin-left: -5px;
+        margin-top: 8px;
+        width: 242px !important;
+    }
+}
+
+.nav-tabs>li.active>a {
+    border-top-width: 3px !important;
+    border-top-color: #3c8dbc !important;
+}
+
+.activeTabContent {
+    margin-top: 10px;
+    margin-left: 15px;
+}
+
+#addOutputBtn {
+    margin-top: 10px;
+}
+
+.btnInHistoryAndDischarge {
+    margin-left: 20px;
+}

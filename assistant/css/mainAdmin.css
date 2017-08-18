@@ -1,0 +1,254 @@
+#wrapperMainAdmin {
+    margin-top: -20px;
+    padding-left: 0;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+
+#wrapperMainAdmin.toggled {
+    padding-left: 250px;
+}
+
+#sidebar-wrapper {
+    z-index: 1000;
+    position: fixed;
+    left: 250px;
+    width: 0;
+    height: 100%;
+    margin-left: -250px;
+    overflow-y: auto;
+    background: #f4f4f4;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+
+.mainAdminLinks {
+    cursor: pointer;
+}
+
+#wrapperMainAdmin.toggled #sidebar-wrapper {
+    width: 250px;
+}
+
+#medicinesDropDown {
+    margin-left: 12px;
+    height: 90px !important;
+}
+
+#page-content-wrapper,
+#insurance-page-content-wrapper {
+    width: 100%;
+    position: absolute;
+    padding: 15px;
+}
+
+#wrapperMainAdmin.toggled #page-content-wrapper,
+#wrapperMainAdmin.toggled #insurance-page-content-wrapper {
+    position: absolute;
+    margin-right: -250px;
+}
+
+
+/* Sidebar Styles */
+
+.sidebar-nav {
+    position: absolute;
+    top: 0;
+    width: 250px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.sidebar-nav li {
+    text-indent: 20px;
+    line-height: 40px;
+}
+
+.sidebar-nav li a {
+    display: block;
+    text-decoration: none;
+    color: black;
+}
+
+.sidebar-nav li a:hover {
+    text-decoration: none;
+    color: #fff;
+    background: #3c8dbc;
+}
+
+.sidebar-nav li a:active,
+.sidebar-nav li a:focus {
+    color: #fff;
+    background: #3c8dbc;
+    text-decoration: none;
+}
+
+.sidebar-nav > .sidebar-brand {
+    height: 65px;
+    font-size: 18px;
+    line-height: 60px;
+}
+
+.sidebar-nav > .sidebar-brand a {
+    color: black;
+}
+
+.sidebar-nav > .sidebar-brand a:hover {
+    color: black;
+    background: none;
+}
+
+@media(min-width:768px) {
+    #wrapperMainAdmin {
+        padding-left: 250px;
+    }
+    #wrapperMainAdmin.toggled {
+        padding-left: 0;
+    }
+    #sidebar-wrapper {
+        width: 250px;
+    }
+    #wrapperMainAdmin.toggled #sidebar-wrapper {
+        width: 0;
+    }
+    #page-content-wrapper,
+    #insurance-page-content-wrapper {
+        padding: 20px;
+        position: relative;
+    }
+    #wrapperMainAdmin.toggled #page-content-wrapper,
+    #wrapperMainAdmin.toggled #insurance-page-content-wrapper {
+        position: relative;
+        margin-right: 0;
+    }
+}
+
+.mainAdminBtn,
+.mainAdminBtn:hover {
+    color: white;
+    background-color: #3c8dbc;
+}
+
+.mainAdminTable>thead>tr>th,
+.mainAdminTable>tbody>tr>td {
+    text-align: center;
+}
+
+.searchInMainAdmin {
+    width: 180px !important;
+}
+
+.glyphiconSearch {
+    background-color: #3c8dbc !important;
+    color: white !important;
+}
+
+.searchBtnInMainAdmin {
+    margin-top: -1px !important;
+    height: 35px !important;
+}
+
+.errorMessagesInModal {
+    color: red;
+    margin-top: -3px;
+}
+
+#drpBtnRoom,
+#drpBtnRoomDoctor,
+#drpBtnRoomDoc,
+#drpBtnBedDoctor {
+    margin-left: -1px !important;
+    border-color: none !important;
+    color: black !important;
+    width: 75% !important;
+}
+
+#drpBtnDivAdmin>ul,
+#drpBtnDivAdminDoctor>ul,
+#drpBtnDivAdminDoc>ul,
+#drpBtnDivAdminBed>ul {
+    width: 75% !important;
+}
+
+#drpBtnRegisterPatient,
+#drpBtndoctor,
+#drpBtnMedication {
+    margin-left: -1px !important;
+    border-color: none !important;
+    color: black !important;
+    width: 100% !important;
+}
+
+#drpBtnMedication {
+    border-radius: 0px !important;
+    border-color: #d2d6de !important;
+}
+
+#caretInCategory,
+#caretInDoctor,
+#caretInDoc,
+#caretInBed {
+    position: absolute;
+    left: 70%;
+    top: 43%;
+}
+
+#drpBtnRoomTransferRoomNum>ul>li,
+#drpBtnRoomTransfer>ul>li,
+#drpBtnRoomTransferBedNum>ul>li,
+#doctorInOperator>ul>li {
+    text-align: center;
+}
+
+#drpBtnDivRegisterPatient>ul,
+#drpBtnDivdoctor>ul,
+#drpBtnRoomTransfer>ul,
+#drpBtnRoomTransferRoomNum>ul,
+#drpBtnRoomTransferBedNum>ul,
+#doctorInOperator>ul {
+    width: 100% !important;
+}
+
+#caretInRegister,
+#caretIndoctor,
+#roomTransferCaretInModal,
+#roomNameCaretInModal,
+#bedNameCaretInModal {
+    position: absolute;
+    left: 90%;
+    top: 43%;
+}
+
+#caretInMedication,
+#caretInInpatient,
+#caretInNurse {
+    position: absolute;
+    left: 94%;
+    top: 43%;
+}
+
+#caretdoctorInOperator {
+    position: absolute;
+    left: 93%;
+    top: 36%;
+}
+
+.highlightActiveAdminEntity {
+    color: white !important;
+    background-color: #3c8dbc !important;
+}
+
+.highlightActiveAdminEntity>a {
+    color: white !important;
+    cursor: pointer !important;
+}
+
+.phoneNumberErrorMessageInRegister {
+    color: red;
+    margin-top: -18px;
+}

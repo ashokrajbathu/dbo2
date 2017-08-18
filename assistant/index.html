@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>dbotica</title>
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap-theme.css">
+    <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="css/ionicons.min.css">
+    <link rel="stylesheet" type="text/css" href="css/sweet-alert.css">
+    <link rel="stylesheet" type="text/css" href="../fonts/css/fonts.css">
+    <link rel="stylesheet" type="text/css" href="../dist/css/AdminLTE.css">
+    <link rel="stylesheet" type="text/css" href="../dist/css/skins/_all-skins.min.css">
+    <link rel="stylesheet" type="text/css" href="css/ng-table.css">
+    <link rel="stylesheet" type="text/css" href="css/nurse.css">
+    <link rel="stylesheet" type="text/css" href="css/mainAdmin.css">
+    <link rel="stylesheet" type="text/css" href="css/billingPrint.css">
+    <link rel="stylesheet" type="text/css" href="css/invoiceHistory.css">
+    <link rel="stylesheet" type="text/css" href="css/operator.css">
+    <link rel="stylesheet" type="text/css" href="css/inpatient.css">
+    <link rel="stylesheet" type="text/css" href="css/admin.css">
+    <link rel="stylesheet" type="text/css" href="css/itemInfo.css">
+    <link rel="stylesheet" type="text/css" href="css/inventory.css">
+    <link rel="stylesheet" type="text/css" href="css/billManagement.css">
+    <link rel="stylesheet" type="text/css" href="css/personalAssistant.css">
+    <link rel="stylesheet" type="text/css" href="../plugins/iCheck/flat/blue.css">
+    <link rel="stylesheet" type="text/css" href="../plugins/fullcalendar/fullcalendar.min.css">
+    <link rel="stylesheet" type="text/css" href="../plugins/fullcalendar/fullcalendar.print.css" media="print">
+    <link rel="stylesheet" type="text/css" href="../plugins/morris/morris.css">
+    <link rel="stylesheet" type="text/css" href="../plugins/daterangepicker/daterangepicker-bs3.css">
+    <link rel="stylesheet" type="text/css" href="css/jquery-ui.css">
+    <script src="../plugins/jQuery/jQuery-2.1.4.min.js"></script>
+    <script src="../js/jquery-ui.js"></script>
+</head>
+
+<body id="body" class="hold-transition skin-blue sidebar-mini" ng-app="personalAssistant" ng-cloak>
+    <div ui-view autoscroll="false"></div>
+    <script type="text/javascript" src="indexedDB/indexedAssistant.js"></script>
+    <script type="text/javascript" src="../js/lodash.js"></script>
+    <script type="text/javascript" src="../bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../js/raphael-min.js"></script>
+    <script type="text/javascript" src="../plugins/morris/morris.min.js"></script>
+    <script type="text/javascript" src="../js/moment.min.js"></script>
+    <script type="text/javascript" src="../js/date.min.js"></script>
+    <script type="text/javascript" src="../plugins/fullcalendar/fullcalendar.min.js"></script>
+    <script type="text/javascript" src="../plugins/daterangepicker/daterangepicker.js"></script>
+    <script type="text/javascript" src="../plugins/timepicker/jquery.timepicker.js"></script>
+    <script type="text/javascript" src="../plugins/slimScroll/jquery.slimscroll.min.js"></script>
+    <script type="text/javascript" src="../plugins/fastclick/fastclick.min.js"></script>
+    <script type="text/javascript" src="../dist/js/app.min.js"></script>
+    <script type="text/javascript" src="../dist/js/demo.js"></script>
+    <script type="text/javascript" src="../js/angular.js"></script>
+    <script type="text/javascript" src="../js/angular-animate.js"></script>
+    <script type="text/javascript" src="../js/dynamic-forms.js"></script>
+    <script type="text/javascript" src="../js/ui-bootstrap-tpls-1.3.3.js"></script>
+    <script type="text/javascript" src="../js/angular-ui-router.min.js"></script>
+    <script type="text/javascript" src="../js/sweet-alert.js"></script>
+    <script type="text/javascript" src="../js/angular-messages.js"></script>
+    <script type="text/javascript" src="../js/ng-table.js"></script>
+    <script type="text/javascript" src="controllers/main.js"></script>
+    <script type="text/javascript" src="directives/dboticaDirectives.js"></script>
+    <script type="text/javascript" src="filters/dboticaFilters.js"></script>
+    <script type="text/javascript" src="controllers/nurseController.js"></script>
+    <script type="text/javascript" src="controllers/patientHistoryController.js"></script>
+    <script type="text/javascript" src="controllers/medicationController.js"></script>
+    <script type="text/javascript" src="controllers/intakeOutputController.js"></script>
+    <script type="text/javascript" src="controllers/progressNoteController.js"></script>
+    <script type="text/javascript" src="controllers/vitalSignController.js"></script>
+    <script type="text/javascript" src="controllers/bedSideProcedureController.js"></script>
+    <script type="text/javascript" src="controllers/ipRoomTransferController.js"></script>
+    <script type="text/javascript" src="controllers/dischargeSummaryController.js"></script>
+    <script type="text/javascript" src="controllers/patientDetailsController.js"></script>
+    <script type="text/javascript" src="controllers/mainAdminController.js"></script>
+    <script type="text/javascript" src="controllers/doctorCategoryController.js"></script>
+    <script type="text/javascript" src="controllers/addDoctorController.js"></script>
+    <script type="text/javascript" src="controllers/roomCategoryController.js"></script>
+    <script type="text/javascript" src="controllers/addRoomController.js"></script>
+    <script type="text/javascript" src="controllers/addBedController.js"></script>
+    <script type="text/javascript" src="controllers/addTemplateController.js"></script>
+    <script type="text/javascript" src="controllers/permissionsController.js"></script>
+    <script type="text/javascript" src="controllers/registerPatientController.js"></script>
+    <script type="text/javascript" src="controllers/patientEventsController.js"></script>
+    <script type="text/javascript" src="controllers/billingPrintController.js"></script>
+    <script type="text/javascript" src="controllers/inpatientController.js"></script>
+    <script type="text/javascript" src="controllers/invoiceHistoryController.js"></script>
+    <script type="text/javascript" src="controllers/operatorController.js"></script>
+    <script type="text/javascript" src="controllers/adminCtrl.js"></script>
+    <script type="text/javascript" src="controllers/inventoryCtrl.js"></script>
+    <script type="text/javascript" src="controllers/labsController.js"></script>
+    <script type="text/javascript" src="controllers/insuranceController.js"></script>
+    <script type="text/javascript" src="controllers/registrationController.js"></script>
+    <script type="text/javascript" src="controllers/approvalsController.js"></script>
+    <script type="text/javascript" src="controllers/acceptanceController.js"></script>
+    <script type="text/javascript" src="controllers/patientManagementCtrl.js"></script>
+    <script type="text/javascript" src="controllers/billManagementCtrl.js"></script>
+    <script type="text/javascript" src="controllers/homeCtrl.js"></script>
+    <script type="text/javascript" src="controllers/itemInfoCtrl.js"></script>
+    <script type="text/javascript" src="services/services.js"></script>
+    <script type="text/javascript" src="services/doctors.js"></script>
+    <script type="text/javascript" src="controllers/app.js"></script>
+</body>
+
+</html>

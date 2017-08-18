@@ -1,0 +1,163 @@
+/*table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th,
+td {
+    width: 80%;
+    color: black;
+    padding: 18px 18px 18px 18px;
+    font-size: 14px;
+    text-align: left;
+    border-bottom: 3px solid #ddd;
+}*/
+
+
+/*#ToRow {
+    margin-left: 1%;
+}*/
+
+.formContent {
+    min-height: 10px;
+}
+
+.accordionHeader {
+    border-radius: 4px;
+    width: 100%;
+    background-color: #3c8dbc;
+    color: white;
+}
+
+#current-prescriptions,
+.testsHead {
+    border-left: 2px solid #3c8dbc;
+    border-right: 2px solid #3c8dbc;
+    border-bottom: 2px solid #3c8dbc;
+    border-top: 2px solid #3c8dbc;
+    background-color: #3c8dbc;
+}
+
+.testsHead>tr:hover {
+    background-color: #3c8dbc;
+}
+
+.testsHead>tr>th {
+    color: white;
+}
+
+.drugsHead>tr:hover {
+    background-color: #3c8dbc;
+}
+
+#current-prescriptions>thead>tr>th {
+    color: white;
+}
+
+.testsTable>tbody>tr>td {
+    border: 2px solid #3c8dbc;
+}
+
+#current-prescriptions>tbody>tr>td {
+    border: 2px solid #3c8dbc;
+}
+
+.accordionHeader>thead>tr:hover {
+    border-radius: 5px;
+    width: 100%;
+    background-color: #3c8dbc;
+    color: white;
+}
+
+.accordionHeader>thead>tr>th {
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 18px;
+    height: 40px;
+}
+
+.fixed {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+
+.form-group {
+    margin-bottom: 6px;
+}
+
+.fixed-side-content {
+    position: fixed;
+    bottom: 0px;
+    left: 0px;
+}
+
+#header {
+    padding-top: 0px;
+}
+
+.col-xs-12 {
+    margin-top: -30px;
+}
+
+tr:hover {
+    background-color: #f5f5f5;
+}
+
+.ui-widget-content {
+    background: white;
+    height: 300px;
+    margin-left: -10px;
+    margin-right: -10px;
+}
+
+.ui-corner-all {
+    border-bottom-right-radius: 0px;
+    border-bottom-left-radius: 0px;
+}
+
+.ui-state-default {
+    border-bottom-width: 3px;
+    border-top-width: 0px;
+    border-left-width: 0px;
+    border-right-width: 0px;
+    border-bottom-style: solid;
+    border-bottom-color: #cccccc;
+    color: black;
+    background: white;
+    font-weight: normal;
+}
+
+.ui-accordion .ui-accordion-header {
+    padding: 0.2em 2em 1em 2em;
+}
+
+#test-details-myPrescription {
+    margin-top: 10px;
+}
+
+.ui-state-default:hover {
+    background: #f5f5f5;
+}
+
+.accordion-row {
+    height: 45px;
+}
+
+.accordion-header {
+    height: 60px;
+    background-color: #f5f5f5;
+}
+
+.name {
+    margin-left: 50px;
+}
+
+.col-md-3 {
+    text-align: left;
+}
+
+.row {
+    margin-right: -10px;
+    margin-left: -10px;
+}

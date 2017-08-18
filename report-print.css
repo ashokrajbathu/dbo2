@@ -1,0 +1,208 @@
+img {
+    width: 60px;
+}
+
+hr {
+    margin-top: 2px;
+}
+
+#division {
+    margin-top: -3px;
+}
+
+#patientGender {
+    margin-left: 25px;
+}
+
+#pr-doctor-name {
+    width: 100%;
+}
+
+#patientDetails1 {
+    margin-top: 10px;
+}
+
+#dosageTimings {
+    font-size: 10px;
+}
+
+#pr-bar-code {
+    margin-top: 20px;
+}
+
+hr {
+    border: 1.5px solid black;
+}
+
+label {
+    font-weight: 600;
+}
+
+#footer {
+    position: fixed;
+    left: 0px;
+    bottom: 0px;
+    height: 50px;
+    width: 100%;
+    background: #999;
+}
+
+#report-tests {
+    margin-bottom: 5px;
+}
+
+.patientDetails {
+    margin-top: 8px;
+}
+
+.table-striped>tbody>tr>td {
+    padding: 2px;
+}
+
+.table-striped>thead>tr>th {
+    padding: 2px;
+}
+
+.details {
+    width: 100%;
+}
+
+.symptoms-investigations {
+    margin-top: 4px;
+    margin-bottom: 10px;
+}
+
+.symptoms-investigations>tbody>tr>td {
+    border: 1px solid black;
+}
+
+.table-striped {
+    border-top: 2px;
+    border-left: 2px;
+    border-right: 2px;
+    border-bottom: 2px;
+    border-style: solid;
+    border-color: black;
+}
+
+.patientInfoDetails {
+    padding: 4px;
+    font-size: 12px;
+    height: 10px;
+}
+
+
+/*#investigations {
+    margin-top: 16px;
+    margin-bottom: 4px;
+}*/
+
+.header {
+    height: 7px;
+    font-size: 12px;
+}
+
+#exampleDate {
+    margin-left: -20px;
+}
+
+.phoneRow{
+    margin-top: -12px;
+}
+
+.specializationRow {
+    margin-top: -3px;
+    margin-left: 2px;
+    font-weight: 500;
+}
+
+#pr-doctor-specialization{
+    font-style: bold;
+}
+
+#pr-doctor-phoneNumber,
+#pr-doctor-registrationNo {
+    font-weight: 800;
+    margin-right: 10%;
+}
+
+#registrationRow {
+    margin-top: -12px;
+}
+
+#billNo {
+    margin-left: 50%;
+}
+
+#exampleVisitDate {
+    margin-left: 50%;
+}
+
+#symptoms {
+    margin-top: 20px;
+}
+
+h5 {
+    margin-top: 20px;
+}
+
+h4 {
+    margin-top: 50px;
+}
+
+.patient-details {
+    margin-top: -10px;
+    border-left: 1px solid #f5f5f5;
+    border-bottom: 1px solid #f5f5f5;
+    border-right: 1px solid #f5f5f5;
+}
+
+.assessments {
+    margin-top: 4px;
+    margin-bottom: 22px;
+}
+
+.row2 {
+    margin-top: 4px;
+}
+
+#revisit-label {
+    margin-top: 2px;
+    font-weight: 600;
+}
+
+td {
+    text-align: left;
+}
+
+.details {
+    margin-top: -10px;
+    border-bottom: 1px;
+    border-left: 1px;
+    border-right: 1px;
+    border-top: 0.5px;
+    border-color: black;
+    border-style: solid;
+}
+
+#signature {
+    margin-top: -40px;
+}
+
+.assessment {
+    width: 100%;
+    padding-top: 5px;
+    height: 30px;
+    border-top: 1px;
+    border-left: 1px;
+    border-right: 1px;
+    border-bottom: 0px;
+    border-color: black;
+    border-style: solid;
+    background-color: #f5f5f5;
+    text-align: center;
+}
+
+{
+    margin: 0;
+}

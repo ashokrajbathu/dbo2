@@ -1,0 +1,329 @@
+<div class="patientManagement" ng-controller="patientManagementCtrl" ng-cloak>
+    <aside style="background-color:#3c8dbc;" class="main-sidebar">
+        <section class="sidebar">
+            <h4 style="color:white;" class="asideDoctorsHeader">Doctors</h4>
+            <hr class="asideHr">
+            <ul class="docList nav">
+                <li id="menu_text" ng-repeat="doctor in doctorsList" ng-click="doctorSelected(doctor,$index)">
+                    <a ng-class="{'activeLi':$index==0}" ng-attr-id="{{'doctorLi'+$index}}" style="color:white;" class="docLinks itemsAnimation">{{doctor.firstName}} {{doctor.lastName}}<br>{{doctor.speciality}}</a>
+                    <hr class="doctorLine">
+                </li>
+            </ul>
+        </section>
+    </aside>
+    <div class="content-wrapper" style="background-color:white;margin-top:8px;" ng-cloak>
+        <div id="blurBackScreen" ng-show="blurScreen"></div>
+        <img class="spinner" src="css/images/default (2).gif" ng-show="loading"></img>
+        <h4 style="font-size:22px;color:#49b181;">Dr.{{doctorName}}
+        <button type="button" ng-click="viewDoctorsSection()" class="doctorTimingsBtn pull-right btn">Doctor Timings</button>
+        <button type="button" ng-click="cancelBookingsModal()" data-toggle="modal" data-target="#myCancelBookingsModal" class="cancelBookingsBtn pull-right btn">Cancel Bookings</button>
+         </h4>
+        <h5><b> {{doctorSpecialization}}</b>
+        </h5>
+        <div class="container">
+            <div class=" buttonsRow">
+                <form class="form-inline">
+                    <div class="form-group">
+                        <input ng-maxlength=10 numbers-only type="text" id="inputPatientPhoneNumberSearch" ng-model="patientDataSearch.phoneNumberSearch" placeholder="Phone Number">
+                        <button id="patientSearchInAppointments" type="button" class="addPatientBtn btn" data-toggle="modal" ng-click="patientSearch()" data-target="#myModal">Patient Search</button>
+                    </div>
+                    <div style="float:right;" class="form-group">
+                        <input type="text" ng-model="appointmentsSearchDate" ng-change="appointmentsOfDate()" id="searchDate" placeholder="Search Date">
+                    </div>
+                </form>
+            </div>
+            <div id="myCancelBookingsModal" class="modal fade" role="dialog">
+                <div class="modal-dialog">
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title">Cancel Bookings</h4>
+                        </div>
+                        <div class="modal-body">
+                            <label for="exampleInputEmail2">Phone Number : </label>
+                            <form class="form-inline">
+                                <div class="form-group">
+                                    <input ng-model="cancelBook.phoneNumber" numbers-only type="text" class="form-control" id="exampleInputphoneNumberForCancelling" placeholder="Phone Number">
+                                </div>
+                                <button type="submit" id="modalCancelBookingsSearchBtn" ng-click="cancelBookings()" class="btn">Search Bookings</button>
+                            </form>
+                            <hr>
+                            <div ng-if="cancelAppointmentsTable">
+                                <label>Slots : </label>
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>S.No.</th>
+                                            <th>Name</th>
+                                            <th>Date</th>
+                                            <th>Time</th>
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="itemsAnimation" ng-repeat="booking in bookingsForCancelling">
+                                            <td>{{$index+1}}</td>
+                                            <td>{{booking.label}}</td>
+                                            <td>{{booking.startTime | date:'dd/MM/yyyy'}}</td>
+                                            <td>{{booking.startTime | date:"h:mm a"}}</td>
+                                            <td>
+                                                <button type="button" ng-click="cancelAppointmentBookingOfFutureDays(booking,$index)" class="btn cancelBookingsModalCloseBtn btn-xs">Cancel</button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div ng-show="doctorTimings" class="doctorTimings">
+                <form class="form-inline">
+                    <div class="form-group sessionDateSelect">
+                        <p style="margin:0px 10px 0 0;" class="dataPara">
+                            <label>Date:</label>
+                            <input ng-model="dateSelected" type="text" id="sessionDatepicker">
+                        </p>
+                    </div>
+                    <div class="form-group">
+                        <p class="startTimeBox">
+                            <label>Start Time:</label>
+                            <input class="time ui-timepicker-input" ng-model="addTime.dayStartTime" type="text" id="timepicker">
+                        </p>
+                    </div>
+                    <div class="form-group">
+                        <p class="endTimeBox">
+                            <label>End Time:</label>
+                            <input class="time ui-timepicker-input" ng-model="addTime.dayEndTime" type="text" id="timepickerEndTime">
+                        </p>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEndTime">Step Size(in mins):</label>
+                        <input type="text" class="ui-timepicker-input time" ng-model="addTime.timePerPatient" class="form-control" id="exampleInputStepSize">
+                    </div>
+                    <button type="submit" ng-click="addTimingsBtn()" class="btn btn-default">Add Timings</button>
+                </form>
+            </div>
+            <table class="patientsTable table">
+                <thead class="thead-default">
+                    <tr class="patientsListHeaderRow">
+                        <th>S.No.</th>
+                        <th>Patient Name</th>
+                        <th>Entry Type</th>
+                        <th>Time</th>
+                        <th id="actions">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="patientRow" ng-repeat="patient in patientsList">
+                        <td>{{$index+1}}</td>
+                        <td>{{patient.label}}</td>
+                        <td ng-bind="patient.calendarStatus|removeunderscoreaddspace"></td>
+                        <td>{{patient.startTime | date:"dd-MM-yyyy,h:mma"}}</td>
+                        <td id="actionsOnPatient">
+                            <button class="btn checkin">Check-In</button>
+                            <button data-toggle="modal" data-target="#myModal" ng-click="editDetailsOfPatient(patient.patientId)" class="btn btn-default neutral">Edit Details</button>
+                            <button ng-click="cancelAppointment(patient,$index)" class="btn warning">Cancel Appointment</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <!-- Modal -->
+            <div id="myModal" class="modal fade" role="dialog">
+                <div id="newPatientModal" class="modal-dialog">
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 style="color:black;" class="modal-title">Patient Details</h4>
+                        </div>
+                        <div class="modal-body">
+                            <!--  <div ng-if="viewDetailsLink" class="patient-form-group form-group">
+                                       <a class="viewDetailsLink" ng-click="viewDetails()" href="javascript:void">View/Hide Patient Details</a>
+                                       <hr>
+                                   </div> -->
+                            <div style="margin-bottom:7px;" class="pull-right" ng-if="familyMemberLink" class="row">
+                                <a ng-click="addNewMemberToPhoneNumber()" style="cursor:pointer;">Add Family Member</a>
+                            </div>
+                            <div ng-if="patientsOfNumber" class="patientsList">
+                                <div class="row">
+                                    <label style="margin-left:12px;">Patients :</label>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-3 col-sm-2 col-xs-6" ng-repeat="patientEntity in patientsOfPhoneNumber">
+                                        <div class="radio patientRadios">
+                                            <label class="textOfRadios">
+                                                <input ng-click="selectActivePatient(patientEntity,$index)" type="radio" ng-checked="{{'radio'+$index}}" name="patientRadio">{{patientEntity.firstName}}
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div ng-show="patientAvailable">
+                                <div class="row inpatientRowInModal">
+                                    <div class="col-md-4 col-sm-8 col-xs-8">
+                                        <form>
+                                            <div class="form-group">
+                                                <label for="exampleInputName">*First Name</label>
+                                                <input type="text" class="form-control exampleInpatientPhone" id="exampleInputFirstName" ng-model="patientData.firstName" placeholder="First Name">
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <div class="col-md-4 col-sm-8 col-xs-8">
+                                        <form>
+                                            <div class="form-group">
+                                                <label for="exampleInputName">*Last Name</label>
+                                                <input type="text" class="form-control exampleInpatientPhone" id="exampleInputFirstName" ng-model="patientData.lastName" placeholder="Last Name">
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <div class="col-md-4 col-sm-8 col-xs-8">
+                                        <form>
+                                            <div class="form-group">
+                                                <label for="exampleInputPhoneNumber">*Phone Number</label>
+                                                <input numbers-only type="text" class="form-control exampleInpatientPhone" id="exampleInputPhoneNumber" ng-model="patientData.phoneNumber" placeholder="Phone Number">
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                                <div class="row inpatientRowInModal">
+                                    <div class="col-md-4 col-sm-8 col-xs-8">
+                                        <form>
+                                            <div class="form-group">
+                                                <label for="exampleInputEmail">Email</label>
+                                                <input type="email" class="form-control exampleInpatientPhone" id="exampleInputEmail" ng-model="patientData.emailId" placeholder="Email">
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <div class="col-md-4 col-sm-8 col-xs-8">
+                                        <form>
+                                            <div class="form-group">
+                                                <label for="exampleInputAge">Age</label>
+                                                <input type="text" class="form-control exampleInpatientPhone" id="exampleInputAge" ng-model="patientData.age" placeholder="Age">
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <div class="col-md-4 col-sm-8 col-xs-8">
+                                        <form>
+                                            <div class="form-group">
+                                                <label for="exampleInputGender">Gender</label>
+                                                <select ng-model="patientData.gender" class="form-control exampleInpatientPhone" id="exampleInputGender">
+                                                    <option>MALE</option>
+                                                    <option>FEMALE</option>
+                                                </select>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                                <div class="row inpatientRowInModal">
+                                    <div class="col-md-4 col-sm-8 col-xs-8">
+                                        <form>
+                                            <div class="form-group">
+                                                <label for="exampleInputBloodGroup">Blood Group</label>
+                                                <select ng-model="patientData.bloodGroup" class="form-control exampleInpatientPhone" id="exampleInputBloodGroup">
+                                                    <option value="O_POSITIVE">O_POSITIVE</option>
+                                                    <option value="O_NEGATIVE">O_NEGATIVE</option>
+                                                    <option value="A_POSITIVE">A_POSITIVE</option>
+                                                    <option value="A_NEGATIVE">A_NEGATIVE</option>
+                                                    <option value="B_POSITIVE">B_POSITIVE</option>
+                                                    <option value="B_NEGATIVE">B_NEGATIVE</option>
+                                                    <option value="AB_POSITIVE">AB_POSITIVE</option>
+                                                    <option value="AB_NEGATIVE">AB_NEGATIVE</option>
+                                                    <option value="OTHER">OTHER</option>
+                                                </select>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <div class="col-md-4 col-sm-8 col-xs-8">
+                                        <form>
+                                            <div class="form-group">
+                                                <label for="exampleInputDrugAllergy">Drug Allergy</label>
+                                                <input type="text" ng-model="patientData.drugAllergy" class="form-control exampleInpatientPhone" id="exampleInputDrugAllergy" placeholder="Drug Allergy">
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <div class="col-md-4 col-sm-8 col-xs-8">
+                                        <form>
+                                            <div class="form-group">
+                                                <label for="selectCaseNumber">Select Case Number</label>
+                                                <div class="dropdown">
+                                                    <button style="width:100%;color:black;border-radius:0px;border-color:#d2d6de;" class="btn dropdown-toggle" type="button" data-toggle="dropdown">{{caseNumber}}
+                                                        <span class="caret caretCss"></span></button>
+                                                    <ul class="dropdown-menu">
+                                                        <li ng-click="selectCaseNumber(case)" ng-repeat="case in caseNumbersList">
+                                                            <a style="cursor:pointer;" ng-bind="case.organizationCaseNo"></a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-4 col-sm-8 col-xs-8">
+                                        <form>
+                                            <div class="form-group">
+                                                <label for="selectReferFrom">Refer From Doctor</label>
+                                                <input type="text" class="form-control" placeholder="Refer From Doctor">
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="nextForm" ng-show="nextForm">
+                            <b id="bookAppointmentLabel">Book Appointment:</b>
+                            <form class="patient-form-inline form-inline">
+                                <div class="col-md-4 patient-form-group form-group">
+                                    <span class="modalInfo">Name</span>
+                                    <input type="text" class="modal-Form-control form-control" id="inputPatientNameInNextDiv" ng-model="patientDataInNextDiv.name" placeholder="Name">
+                                </div>
+                                <div class="col-md-4 patient-form-group form-group">
+                                    <span class="modalInfo">Entry Type</span>
+                                    <button ng-change="changeEntryTypeView()" id="entryTypeBtn" class="btn dropdown-toggle" ng-model="entryTypeSelected.value" type="button" data-toggle="dropdown">{{patientEntryType}}
+                                        <span id="walkinAppointmentCaret0" class="caret caretCss"></span></button>
+                                    <ul id="walkinAppointmentDropdown" class="dropdown-menu">
+                                        <li style="cursor:pointer;" ng-repeat="option in entryType"><a ng-click="selectOption(option)">{{option}}</a></li>
+                                    </ul>
+                                </div>
+                            </form>
+                            <form ng-show="dateSelectBox" class="patient-form-inline form-inline">
+                                <div class="col-md-4 patient-form-group form-group">
+                                    <p class="modalInfo">Date:
+                                        <br>
+                                        <input readonly="readonly" ng-model="dateSelectedForBooking" ng-change="dateTimings()" class="modal-Form-control form-control datepicker" type="text" id="datepicker">
+                                    </p>
+                                </div>
+                            </form>
+                            <div ng-if="sessionTypes" class="col-md-12">
+                                <div class="btn-group">
+                                    <label class="btn btn-default" ng-model="radioModel" btn-radio="'morning'" id="morningLabel" ng-click="viewTime('morning')" uncheckable>Morning</label>
+                                    <label class="btn btn-default" ng-model="radioModel" btn-radio="'afternoon'" id="afternoonLabel" ng-click="viewTime('afternoon')" uncheckable>Afternoon</label>
+                                    <label class="btn btn-default" ng-model="radioModel" btn-radio="'evening'" id="eveningLabel" ng-click="viewTime('evening')" uncheckable>Evening</label>
+                                </div>
+                            </div>
+                            <div class="timings" ng-if="morningTimings">
+                                <span ng-repeat="element in morningArray" ng-attr-id="{{'morningArrayBtn'+$index}}" ng-attr-ng-disabled="{{'morningArrayBtnDisabled'+$index}}" class="btn morningTimingsArray buttonTimings" ng-class="{true:'activeButton'}[activeBtn == $index]" ng-click="selectButton(element.time,$index);">{{element.time | date:"h:mm a"}} ({{element.count}})</span>
+                            </div>
+                            <div class="timings" ng-if="afternoonTimings">
+                                <span ng-repeat="element in afternoonArray" ng-attr-id="{{'afternoonArrayBtn'+$index}}" ng-attr-ng-disabled="{{'afternoonArrayBtnDisabled'+$index}}" class="btn afternoonTimingsArray buttonTimings" ng-class="{true:'activeButton'}[activeBtnAfternoon == $index]" ng-click="selectAfternoonButton(element.time,$index);">{{element.time | date:"h:mm a"}} ({{element.count}})</span>
+                            </div>
+                            <div class="timings" ng-if="eveningTimings">
+                                <span ng-repeat="element in eveningArray" ng-attr-id="{{'eveningArrayBtn'+$index}}" ng-attr-ng-disabled="{{'eveningArrayBtnDisabled'+$index}}" class="btn eveningTimingsArray buttonTimings" ng-class="{true:'activeButton'}[activeBtnEvening == $index]" ng-click="selectEveningButton(element.time,$index);">{{element.time | date:"h:mm a"}} ({{element.count}})</span>
+                            </div>
+                        </div>
+                        <div class="row modal-footer" style="margin-top:200px;border-top:0px;">
+                            <button ng-disabled="nextBtn" type="submit" ng-click="bookSlot()" class="btn btn-primary" data-dismiss="modal">Book</button>
+                            <button id="modalSubmitBtn" ng-disabled="addPatientBtn" type="submit" ng-click="addPatient()" class="btn btn-primary">{{modalSubmitButtonText}}</button>
+                            <button type="button" ng-click="close()" style="margin-right:10px;" class="btn btn-default" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

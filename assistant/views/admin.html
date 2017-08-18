@@ -1,0 +1,159 @@
+<div ng-controller="adminCtrl as adminView" ng-cloak>
+    <div class="admin">
+        <div class="container">
+            <div class="row">
+                <h5 ng-click="adminView.toggleBetweenViews()" style="cursor:pointer;" class="pull-right"><a ng-if="adminView.changeAddressLink">(Change Address)</a><a ng-if="adminView.backLink">(Back to Doctor Section)</a></h5>
+                <h3 class="adminHeader">Admin</h3>
+            </div>
+            <div ng-if="adminView.doctorSectionDiv" class="selectDoctorSection">
+                <form>
+                    <div class="form-group adminEntity">
+                        <div class="form-inline adminEntity">
+                            <div id="doctorInAssistantDrop" class="form-group adminDropDown dropdown">
+                                <button class="serviceDoctorBtn" type="button" data-toggle="dropdown">{{adminView.admin.doctorInDropdown}}
+                                    <span id="caretDoctorInAdmin" class="caret"></span></button>
+                                <ul class="dropdown-menu">
+                                    <li ng-repeat="doctor in adminView.doctorsListInAdmin">
+                                        <a class="doctorsServicesInDropDown" ng-click="adminView.doctorSelect(doctor)" ng-bind="doctor.firstName +' '+doctor.lastName"></a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div id="docTypeInAssistantDrop" class="form-group adminDropDown dropdown">
+                                <button class="serviceDoctorBtn" type="button" data-toggle="dropdown">{{adminView.admin.serviceInDropDown}}
+                                    <span id="caretInAdmin" class="caret"></span></button>
+                                <ul class="dropdown-menu">
+                                    <li ng-repeat="service in adminView.servicesList track by $index">
+                                        <a ng-click="adminView.serviceSelect(service)" ng-bind="service" class="doctorsServicesInDropDown"></a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <span data-toggle="modal" data-target="#categoryModal"><a style="cursor:pointer;">Add Category</a></span>
+                        </div>
+                    </div>
+                    <div ng-if="adminView.admin.procedureName" class="form-group animate-if adminEntity">
+                        <input type="text" class="form-control procedureNameTxtBox" ng-model="adminView.admin.procedureNameTxtBox" ng-change="adminView.testSearch()" ng-model-options="{debounce:500}" placeholder="Name" id="exampleInputProcedureName">
+                        <div style="z-index:1200;position:absolute;" id="testDropdownDiv">
+                            <ul style="z-index:1200;" id="testsDropDown" ng-class="{'testDropDownActive':adminView.dropdownActive}" class="dropdown-menu">
+                                <li ng-click="adminView.selectTestFromTheDropdown(testEntity)" ng-repeat="testEntity in adminView.testsList">
+                                    <a style="cursor:pointer;" ng-bind="testEntity.diagnosisTest"></a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="form-group adminEntity">
+                        <input type="text" class="form-control" valid-number ng-model="adminView.admin.procedureCostTextBox" placeholder="Cost" id="exampleInputCostAdmin">
+                    </div>
+                    <div class="form-group adminEntity">
+                        <input type="text" class="form-control" ng-model="adminView.admin.procedureRemarksTextBox" placeholder="Remarks" id="exampleInputRemarks">
+                    </div>
+                    <div ng-if="adminView.testDuration" class="form-group adminEntity">
+                        <input numbers-only type="text" class="form-control" ng-model="adminView.admin.duration" placeholder="Duration(in minutes)" id="exampleInputDuration">
+                    </div>
+                    <div ng-if="adminView.roomDropDown" id="roomNumberDropdown" class="form-group dropdown">
+                        <button id="selectRoomBtn" type="button" data-toggle="dropdown">{{adminView.roomName}}
+                            <span id="roomCaretInAdmin" class="caret"></span></button>
+                        <ul id="dropdownMenuForRooms" class="dropdown-menu">
+                            <li ng-click="adminView.roomSelectForTest(room,$index)" style="cursor:pointer;" ng-repeat="room in adminView.activeRooms">
+                                <a ng-bind="room.roomNo +'-'+room.floorNo"></a>
+                            </li>
+                        </ul>
+                    </div>
+                    <button type="submit" ng-click="adminView.submitServiceRequest()" class="btn addProcedureBtn adminEntity">Add</button>
+                </form>
+                <div id="blurBackScreen" ng-show="adminView.blurScreen"></div>
+                <img class="spinner" src="css/images/default (2).gif" ng-show="adminView.loading"></img>
+                <table ng-if="adminView.tableFlag" class="table tableInAdmin" ng-cloak>
+                    <thead>
+                        <tr id="doctorServicesHeader">
+                            <th>S.No.</th>
+                            <th>Name</th>
+                            <th>Cost</th>
+                            <th>Remarks</th>
+                            <th ng-if="adminView.testsListFlag">Duration</th>
+                            <th ng-if="adminView.testsListFlag">Room Number</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody class="tableInAdminBody">
+                        <tr ng-repeat="doctorService in adminView.admin.servicesListOfTheDoctor track by $index">
+                            <td ng-bind="$index+1"></td>
+                            <td ng-bind="doctorService.billingName"></td>
+                            <td ng-bind="doctorService.price/100"></td>
+                            <td ng-bind="doctorService.remark"></td>
+                            <td ng-if="adminView.testsListFlag" ng-bind="(doctorService.duration/100)/60"></td>
+                            <td ng-if="adminView.testsListFlag" ng-bind="doctorService.roomAndFloorNumbers"></td>
+                            <td>
+                                <button ng-class="[doctorService.state]" ng-click="adminView.btnActiveInServicesTable(doctorService)" ng-attr-id="{{'activeBtn'+$index}}" class="btn adminActiveInactiveBtnsBlue">{{doctorService.state}}</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div ng-if="adminView.changeAddressView">
+                <h4>Organization Address:</h4>
+                <div class="row">
+                    <div class="col-md-6 col-sm-10 col-xs-12">
+                        <form>
+                            <div class="form-group">
+                                <label for="organizationName">Organization Name</label>
+                                <input ng-model="adminView.orgAddress.label" type="text" class="form-control orgAddressInput" id="exampleInputOrganizationName">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputAddress">Address</label>
+                                <input type="text" ng-model="adminView.orgAddress.address" class="form-control orgAddressInput" id="exampleInputAddress">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputCity">Place</label>
+                                <input ng-model="adminView.orgAddress.city" type="text" class="form-control orgAddressInput" id="exampleInputCity">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputPincode">Pin Code</label>
+                                <input type="text" ng-model="adminView.orgAddress.pinCode" class="form-control orgAddressInput" id="exampleInputPincode">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputPhoneNumber">Phone Number</label>
+                                <input type="text" ng-model="adminView.orgAddress.phoneNumber" class="form-control orgAddressInput" id="exampleInputPhoneNumber">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputCellNumber">Cell Number</label>
+                                <input type="text" ng-model="adminView.orgAddress.cellNumber" class="form-control orgAddressInput" id="exampleInputCellNumber">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputTinNumber">Tin Number</label>
+                                <input type="text" ng-model="adminView.orgAddress.tinNo" class="form-control orgAddressInput" id="exampleInputTinNumber">
+                            </div>
+                            <button ng-click="adminView.updateAddress()" style="margin-top:12px;" type="submit" class="btn addProcedureBtn adminEntity">Save</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="categoryModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Add Category</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="row ">
+                        <div class="col-md-10 col-sm-10 col-xs-10">
+                            <form>
+                                <div class="form-group">
+                                    <label for="exampleCategoryName">Category Name</label>
+                                    <input ng-model="adminView.categoryName" type="text" class="form-control" placeholder="Category Name">
+                                </div>
+                                <div class="form-group">
+                                    <button type="button" ng-click="adminView.addCategory()" class="btn mainAdminBtn">Add</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

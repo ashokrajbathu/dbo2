@@ -1,0 +1,42 @@
+<html>
+<link rel="stylesheet" type="text/css" href="../css/printDischargeSummary.css">
+<style type="text/css">
+@page {
+    size: auto;
+    margin-top: 4mm;
+    margin-bottom: 4mm;
+}
+</style>
+
+<body>
+    <div ng-app="printDischargeSummary" ng-controller="printDischargeSummaryController" class="container">
+        <div ng-repeat="templateEntity in activeTemplateInstances">
+            <div ng-repeat="fieldEntity in templateEntity">
+                <div ng-repeat="field in fieldEntity track by $index">
+                    <h4 ng-if="$index==0" class="labelName" ng-bind="field.sectionName"></h4>
+                    <div>
+                        <table>
+                            <tbody>
+                                <tr ng-if="field.value!==''&&field.fieldType=='TEXT_BOX'||field.fieldType=='TEXT_AREA'||field.fieldType=='DROPDOWN'">
+                                    <td class="labelWidth patientLabels" ng-bind="field.name+':'"></td>
+                                    <td class="patientLabels" ng-bind="field.value"></td>
+                                </tr>
+                                <tr ng-if="field.value!==''&&field.fieldType=='CHECK_BOX'">
+                                    <td class="labelWidth patientLabels" ng-bind="field.name +':'"></td>
+                                    <td class="patientLabels" ng-bind="field.value"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript" src="../../js/angular.js"></script>
+    <script type="text/javascript" src="../../js/lodash.js"></script>
+    <script type="text/javascript" src="../../js/moment.min.js"></script>
+    <script type="text/javascript" src="../services/services.js"></script>
+    <script type="text/javascript" src="../controllers/printDischargeSummaryController.js"></script>
+</body>
+
+</html>

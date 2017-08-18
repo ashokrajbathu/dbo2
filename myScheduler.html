@@ -1,0 +1,898 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>dbotica</title>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <!-- Bootstrap 3.3.5 -->
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="//code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="dist/css/AdminLTE.css">
+    <!-- AdminLTE Skins. Choose a skin from the css/skins
+    folder instead of downloading all of them to reduce the load. -->
+    <link rel="stylesheet" href="dist/css/skins/_all-skins.min.css">
+    <link rel="stylesheet" href="entryPrescription.css">
+    <link rel="stylesheet" type="text/css" href="myScheduler.css">
+    <!-- fullCalendar 2.2.5-->
+    <link rel="stylesheet" href="plugins/fullcalendar/fullcalendar.min.css">
+    <link rel="stylesheet" href="plugins/fullcalendar/fullcalendar.print.css" media="print">
+    <!--Datepicker srcs -->
+    <link rel="stylesheet" href="css/datepicker.css" type="text/css" />
+    <!--  <link rel="stylesheet" media="screen" type="text/css" href="css/layout.css" />-->
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/datepicker.js"></script>
+    <script type="text/javascript" src="js/eye.js"></script>
+    <script type="text/javascript" src="js/utils.js"></script>
+    <script type="text/javascript" src="js/layout.js?ver=1.0.2"></script>
+    <script src="plugins/sweetalert/dist/sweetalert.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="plugins/sweetalert/dist/sweetalert.css">
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+        <![endif]-->
+</head>
+
+<body class="hold-transition skin-blue sidebar-mini control-sidebar-open">
+    <div class="wrapper">
+        <header id="header" class="fixed-content main-header">
+            <!-- Logo -->
+            <a href="entryPrescriptions.html" class="logo fixed" style="width: 13%;">
+                <!-- mini logo for sidebar mini 50x50 pixels -->
+                <span class="logo-mini"><b>db</b></span>
+                <!-- logo for regular state and mobile devices -->
+                <span class="logo-lg"><b>dbotica</b></span>
+            </a>
+            <!-- Header Navbar: style can be found in header.less -->
+            <nav class="navbar navbar-fixed-top" role="navigation" style="margin-left: 13%;">
+                <!-- Sidebar toggle button-->
+                <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </a>
+                <div class="navbar-custom-menu">
+                    <ul class="nav navbar-nav">
+                        <!-- User Account: style can be found in dropdown.less -->
+                        <li class="dropdown user user-menu">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                <img src="dist/img/doctor (1).png" class="user-image" alt="User Image">
+                                <span id="doctorNameInTheHeader" class="hidden-xs"></span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <!-- User image -->
+                                <li class="user-header">
+                                    <img src="dist/img/doctor (1).png" class="img-circle" alt="User Image">
+                                    <p id="doctorName">
+                                    </p>
+                                </li>
+                                <!-- Menu Body -->
+                                <!-- Menu Footer-->
+                                <li class="user-footer">
+                                    <div class="pull-left">
+                                        <a href="doctorProfile.html" class="btn btn-default btn-flat">Profile</a>
+                                    </div>
+                                    <div class="pull-right">
+                                        <a href="#" class="btn btn-default btn-flat" id="logoutButton">Sign out</a>
+                                    </div>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
+        <!-- Left side column. contains the logo and sidebar -->
+        <aside class="fixed-side-content main-sidebar" style="width: 13%;">
+            <!-- sidebar: style can be found in sidebar.less -->
+            <section class="sidebar">
+                <!-- Sidebar user panel (optional) -->
+                <div style="height:80px;" class="user-panel">
+                    <div class="pull-left image">
+                        <img src="dist/img/doctor (1).png" class="img-circle" alt="User Image">
+                    </div>
+                    <div class="pull-left info">
+                        <p id="doctorNameInSideBar"></p>
+                        <!-- Status -->
+                        <a href="doctorProfile.html">Profile</a>
+                    </div>
+                </div>
+                <!-- Sidebar Menu -->
+                <ul class="sidebar-menu">
+                    <li class="header">Welcome</li>
+                    <!-- Optionally, you can add icons to the links -->
+                    <li><a href="entryPrescriptions.html"><i class="fa fa-link"></i> <span>Drug prescription</span></a></li>
+                    <li><a href="myPrescriptions.html"><i class="fa fa-link"></i> <span>My Prescriptions</span></a></li>
+                    <li><a href="myPatients.html"><i class="fa fa-link"></i> <span>My Patients</span></a></li>
+                    <li class="active"><a href="myScheduler.html"><i class="fa fa-link"></i> <span>My Scheduler</span></a></li>
+                    <li><a href="referADoctor.html"><i class="fa fa-link"></i> <span>Refer dbotica</span></a></li>
+                    <!--  <li class="active"><a href="../forms/PatientSearch.html"><i class="fa fa-link"></i> <span>Patient Search</span></a></li>  -->
+                    <li class="treeview">
+                    </li>
+                </ul>
+                <!-- /.sidebar-menu -->
+            </section>
+            <!-- /.sidebar -->
+        </aside>
+        <!-- Content Wrapper. Contains page content -->
+        <div id="calender-section" style="margin-left:13%;">
+            <!-- Content Header (Page header) -->
+            <section class="content-header">
+                <div class="col-md-14">
+                    <div class="box" style="margin-top:5%;">
+                        <h3 class="box-title"></h3>
+                        <button type="submit" class="btn btn-primary pull-right" id="prescription-reset">Reset</button>
+                    </div>
+                    <!-- /.box-header -->
+                </div>
+                <h1>
+                Calendar
+                <!-- <small>Preview</small> -->
+              </h1>
+                <section class="content">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="box box-solid">
+                                <div class="box-header with-border">
+                                    <h4 class="box-title">Draggable Events</h4>
+                                </div>
+                                <div class="box-body">
+                                    <!-- the events -->
+                                    <div id="external-events">
+                                        <div class="external-event bg-green">Lunch</div>
+                                        <div class="external-event bg-yellow">Home</div>
+                                        <div class="checkbox">
+                                            <label for="drop-remove">
+                                                <input type="checkbox" id="drop-remove"> remove after drop
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- /.box-body -->
+                            </div>
+                            <!-- /. box -->
+                            <div class="box box-solid">
+                                <div class="box-header with-border">
+                                    <h3 class="box-title">Create Event</h3>
+                                </div>
+                                <div class="box-body">
+                                    <div class="btn-group" style="width: 100%; margin-bottom: 10px;">
+                                        <!--<button type="button" id="color-chooser-btn" class="btn btn-info btn-block dropdown-toggle" data-toggle="dropdown">Color <span class="caret"></span></button>-->
+                                        <ul class="fc-color-picker" id="color-chooser">
+                                            <li><a class="text-aqua" href="#"><i class="fa fa-square"></i></a></li>
+                                            <li><a class="text-blue" href="#"><i class="fa fa-square"></i></a></li>
+                                            <li><a class="text-light-blue" href="#"><i class="fa fa-square"></i></a></li>
+                                            <li><a class="text-teal" href="#"><i class="fa fa-square"></i></a></li>
+                                            <li><a class="text-yellow" href="#"><i class="fa fa-square"></i></a></li>
+                                            <li><a class="text-orange" href="#"><i class="fa fa-square"></i></a></li>
+                                            <li><a class="text-green" href="#"><i class="fa fa-square"></i></a></li>
+                                            <li><a class="text-lime" href="#"><i class="fa fa-square"></i></a></li>
+                                            <li><a class="text-red" href="#"><i class="fa fa-square"></i></a></li>
+                                            <li><a class="text-purple" href="#"><i class="fa fa-square"></i></a></li>
+                                            <li><a class="text-fuchsia" href="#"><i class="fa fa-square"></i></a></li>
+                                            <li><a class="text-muted" href="#"><i class="fa fa-square"></i></a></li>
+                                            <li><a class="text-navy" href="#"><i class="fa fa-square"></i></a></li>
+                                        </ul>
+                                    </div>
+                                    <!-- /btn-group -->
+                                    <div class="input-group">
+                                        <input id="new-event" type="text" class="form-control" placeholder="Event Title">
+                                        <div class="input-group-btn">
+                                            <button id="add-new-event" type="button" class="btn btn-primary btn-flat">Add</button>
+                                        </div>
+                                        <!-- /btn-group -->
+                                    </div>
+                                    <!-- /input-group -->
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /.col -->
+                        <div class="col-md-9">
+                            <div class="box box-primary">
+                                <div class="box-body no-padding">
+                                    <!-- THE CALENDAR -->
+                                    <div id="calendar"></div>
+                                </div>
+                                <!-- /.box-body -->
+                            </div>
+                            <!-- /. box -->
+                        </div>
+                        <!-- /.col -->
+                    </div>
+                    <!-- /.row -->
+                </section>
+                <!-- /.content -->
+                <footer class="main-footer" style="margin-left:-14px;margin-right:-15px;">
+                    <div class="pull-right hidden-xs">
+                        <b>Version</b> 1.0.0
+                    </div>
+                    <strong>Copyright &copy; 2015-2016 <a href="https://dbotica.com">Dbotica</a>.</strong> All rights reserved.
+                </footer>
+        </div>
+        <!-- Main content -->
+    </div>
+    <!-- /.content-wrapper -->
+    <!-- Control Sidebar -->
+    <!-- Control Sidebar -->
+    <!-- /.control-sidebar -->
+    <!-- Add the sidebar's background. This div must be placed
+      immediately after the control sidebar -->
+    <!-- <div class="control-sidebar-bg"></div> -->
+    </div>
+    <!-- ./wrapper -->
+    <!--added for register pop up --->
+    <!-- jQuery 2.1.4 -->
+    <script src="plugins/jQuery/jQuery-2.1.4.min.js"></script>
+    <script type="text/javascript">
+    $.holdReady(true);
+    if (localStorage.getItem('isLoggedIn') === 'true') {
+        $.holdReady(false);
+    } else {
+        window.location.href = 'login.html';
+    }
+    </script>
+    <!-- Bootstrap 3.3.5 -->
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+    <script src="bootstrap/js/jquery.cookie.js"></script>
+    <!-- jQuery UI 1.11.4 -->
+    <script src="js/jquery-ui.js"></script>
+    <!-- Slimscroll -->
+    <script src="plugins/slimScroll/jquery.slimscroll.min.js"></script>
+    <!-- FastClick -->
+    <script src="plugins/fastclick/fastclick.min.js"></script>
+    <!-- DataTables -->
+    <script src="plugins/datatables/jquery.dataTables.min.js"></script>
+    <script src="plugins/datatables/dataTables.bootstrap.min.js"></script>
+    <!-- fullCalendar 2.2.5 -->
+    <script src="js/moment.min.js"></script>
+    <script src="plugins/fullcalendar/fullcalendar.min.js"></script>
+    <script src="plugins/fullcalendar/fullcalendar.js"></script>
+    <script src="dist/js/app.min.js"></script>
+    <!-- AdminLTE for demo purposes -->
+    <script src="dist/js/demo.js"></script>
+    <!-- IndexedDB for local storage-->
+    <script src="indexedDB/indexedDbotica.js"></script>
+    <script>
+    function removeCookies() {
+        $.removeCookie('currentPrescription');
+        $.removeCookie('newPatientPhoneNumber');
+        $.removeCookie('drugHtml');
+        $.removeCookie('drugEntryCount');
+        $.removeCookie('testHtml');
+        $.removeCookie('testEntryCount');
+        $.removeCookie('currentPatientInfo');
+        $.removeCookie('drugPojoList');
+        $.removeCookie('testPojoList');
+    }
+
+    $('#logoutButton').click(function(e) {
+        $.ajax({
+            type: "POST",
+            url: "http://localhost:8081/dbotica-spring/doctor/logout",
+            beforeSend: function(xhr) {
+                xhr.setRequestHeader("Content-Type", "application/json");
+                xhr.setRequestHeader("Accept", "application/json");
+            },
+            xhrFields: {
+                withCredentials: true
+            },
+            success: function(response) {
+                localStorage.clear();
+                removeCookies();
+                localStorage.setItem('isLoggedIn', false);
+                window.location.replace("login.html");
+
+            }
+        });
+    });
+    $(document).ready(function() {
+        if (localStorage.getItem("isLoggedIn") == "false") {
+            window.location.replace("login.html");
+        }
+
+        var doctorName = localStorage.getItem('firstName');
+        console.log("doctor name is----" + doctorName);
+        $("#doctorName").text(doctorName);
+        doctorName = "Dr. " + doctorName;
+        $("#doctorNameInTheHeader").text(doctorName);
+        $("#doctorNameInSideBar").text(doctorName);
+
+        /*$(window).scroll(function() {
+            var sticky = $('.fixed-content'),
+                scroll = $(window).scrollTop();
+
+            if (scroll > 1) sticky.addClass('fixed');
+            else sticky.removeClass('fixed');
+        });*/
+
+
+        var date = new Date();
+        var d = date.getDate(),
+            m = date.getMonth(),
+            y = date.getFullYear();
+        var event = Array();
+        /* initialize the external events
+        -----------------------------------------------------------------*/
+
+        function ini_events(ele) {
+            ele.each(function() {
+                var eventObject = {
+                    title: $.trim($(this).text()) // use the element's text as the event title
+                };
+
+                // store the Event Object in the DOM element so we can get to it later
+                $(this).data('eventObject', eventObject);
+
+                // make the event draggable using jQuery UI
+                $(this).draggable({
+                    zIndex: 999,
+                    revert: true, // will cause the event to go back to its
+                    revertDuration: 0 //  original position after the drag
+                });
+
+            });
+        }
+        ini_events($('#external-events div.external-event'));
+        $('#calendar').fullCalendar({
+            header: {
+                left: 'prev,next today',
+                center: 'title',
+                right: 'month,agendaWeek,agendaDay'
+            },
+            buttonText: {
+                today: 'today',
+                month: 'month',
+                week: 'week',
+                day: 'day'
+            },
+            eventSources: [{
+                url: 'http://localhost:8081/dbotica-spring/doctor/getMyCalendar',
+                type: 'GET',
+                xhrFields: {
+                    withCredentials: true
+                },
+                success: function(response) {
+                    var errorCode = response.errorCode;
+                    if (!!errorCode) {
+                        switch (errorCode) {
+                            case "NO_USER_LOGGED_IN":
+                                localStorage.setItem("isLoggedIn", false);
+                                swal({
+                                        title: "Error",
+                                        text: "You are not logged into your account. Kindly login again to view this page",
+                                        type: "error",
+                                        confirmButtonText: "OK",
+                                        allowOutsideClick: true
+                                    },
+                                    function() {
+                                        localStorage.setItem("isLoggedIn", false);
+                                        window.location.replace("login.html");
+                                    }
+                                );
+                                break;
+                        }
+                    }
+                },
+                error: function() {
+                    swal({
+                            title: "Error",
+                            text: "There was some error fetching your calendar events. Kindly contact the support team for further details.",
+                            type: "error",
+                            confirmButtonText: "OK",
+                            allowOutsideClick: true
+                        },
+                        function() {
+                            localStorage.setItem("isLoggedIn", false);
+                            window.location.replace("login.html");
+                        }
+                    );
+                },
+                color: 'yellow', // a non-ajax option
+                textColor: 'black' // a non-ajax option
+            }],
+            editable: true,
+            droppable: true, // this allows things to be dropped onto the calendar
+            dayClick: function(date, allDay, jsEvent, view) {
+                //console.log(date.getFullYear()+date.getDate());
+
+                //console.log(view);
+                //if (view === "month") {
+                $('#calendar').fullCalendar('gotoDate', date);
+                $('#calendar').fullCalendar('changeView', 'agendaDay');
+                //}
+            },
+            eventClick: function(calEvent, jsEvent, view) {
+                console.log("cal event is----", calEvent);
+                console.log(calEvent.patientId);
+                $.cookie('patientId_Event', calEvent.patientId);
+                var url = "entryPrescriptions.html";
+                if (!!calEvent.patientId) {
+                    url += "?patientId=" + calEvent.patientId;
+                }
+                window.open(url, '_self');
+
+                /* window.location.href = "entryPrescriptions.html";*/
+
+            },
+
+            eventDoubleClick: function(calEvent, jsEvent, view) {
+
+
+                var r = swal({
+                        title: "Warning",
+                        text: "Are you sure you want to delete event - " + calEvent.title,
+                        type: "warning",
+                        confirmButtonText: "OK",
+                        showConfirmButton: true,
+                        showCancelButton: true,
+                        allowOutsideClick: true
+                    },
+                    function() {
+                        $.ajax({
+                            type: "POST",
+                            url: "http://localhost:8081/dbotica-spring/doctor/deleteCalendarEvent",
+                            //data:JSON.stringify( {'calendarEvent': event}),
+                            beforeSend: function(xhr) {
+                                xhr.setRequestHeader("Content-Type", "application/json");
+                                xhr.setRequestHeader("Accept", "application/json");
+                            },
+                            xhrFields: {
+                                withCredentials: true
+                            },
+                            data: calEvent.calendarEventId,
+                            success: function(response) {
+                                var errorCode = response.errorCode;
+                                if (!!errorCode) {
+                                    switch (errorCode) {
+                                        case "NO_USER_LOGGED_IN":
+                                            localStorage.setItem("isLoggedIn", false);
+                                            swal({
+                                                    title: "Error",
+                                                    text: "You are not logged into your account. Kindly login again to view this page",
+                                                    type: "error",
+                                                    confirmButtonText: "OK",
+                                                    allowOutsideClick: true
+                                                },
+                                                function() {
+                                                    localStorage.setItem("isLoggedIn", false);
+                                                    window.location.replace("login.html");
+                                                }
+                                            );
+                                            break;
+                                    }
+                                }
+
+                                if (response.success === true) {
+                                    $('#calendar').fullCalendar('removeEvents', calEvent._id);
+                                } else {
+                                    swal({
+                                        title: "Error",
+                                        text: "Event did not get delted. Kindly try in some time.",
+                                        type: "error",
+                                        confirmButtonText: "OK",
+                                        allowOutsideClick: true
+                                    });
+                                }
+                            },
+                            error: function(e) {
+                                swal({
+                                    title: "Error",
+                                    text: "Event did not get deleted. Kindly try in some time.",
+                                    type: "error",
+                                    confirmButtonText: "OK",
+                                    allowOutsideClick: true
+                                });
+                            },
+                        });
+                    });
+            },
+            eventDrop: function(event, delta, revertFunc) {
+
+                // console.log(event.id + " was dropped on " + event.start.format());
+                console.log('in event drop');
+                var patientInfoCookie = $.cookie('currentPatientInfo');
+                var patientInfo = $.parseJSON(patientInfoCookie);
+                var formatDate = event.start.toDate();
+                var startTime = formatDate.getTime();
+                startTime = calcLocalTime(startTime);
+
+                $.ajax({
+                    type: "POST",
+                    url: "http://localhost:8081/dbotica-spring/doctor/updateCalendarEvent",
+                    //data:JSON.stringify( {'calendarEvent': event}),
+                    beforeSend: function(xhr) {
+                        xhr.setRequestHeader("Content-Type", "application/json");
+                        xhr.setRequestHeader("Accept", "application/json");
+                    },
+                    xhrFields: {
+                        withCredentials: true
+                    },
+                    data: JSON.stringify({
+                        'doctorId': localStorage.getItem('doctorId'),
+                        'id': event.calendarEventId,
+                        'patientId': patientInfo[0].id,
+                        'startTime': startTime,
+                        'label': event.title,
+                        'backgroundColor': event.backgroundColor,
+                        'borderColor': event.borderColor
+                    }),
+                    success: function(response) {
+                        var errorCode = response.errorCode;
+                        if (!!errorCode) {
+                            switch (errorCode) {
+                                case "NO_USER_LOGGED_IN":
+                                    localStorage.setItem("isLoggedIn", false);
+                                    swal({
+                                            title: "Error",
+                                            text: "You are not logged into your account. Kindly login again to view this page",
+                                            type: "error",
+                                            confirmButtonText: "OK",
+                                            allowOutsideClick: true
+                                        },
+                                        function() {
+                                            localStorage.setItem("isLoggedIn", false);
+                                            window.location.replace("login.html");
+                                        }
+                                    );
+                                    break;
+                            }
+                        }
+
+                        if (response.success === true) {
+
+                        } else {
+                            swal({
+                                title: "Error",
+                                text: "Event did not get updated. Kindly try in some time.",
+                                type: "error",
+                                confirmButtonText: "OK",
+                                allowOutsideClick: true
+                            });
+                        }
+                    },
+                    error: function(e) {
+                        swal({
+                            title: "Error",
+                            text: "Event did not get updated. Kindly try in some time.",
+                            type: "error",
+                            confirmButtonText: "OK",
+                            allowOutsideClick: true
+                        });
+                    },
+                });
+            },
+            eventResize: function(event, delta, revertFunc) {
+
+                console.log('Resize : ' + event.id + " end is now " + event.end.format());
+                console.log('in event drop');
+                var patientInfoCookie = $.cookie('currentPatientInfo');
+                var id = "";
+                try {
+                    var patientInfo = $.parseJSON(patientInfoCookie);
+                    id = patientInfo[0].id;
+                } catch (e) {}
+                var formatDate = event.start.toDate();
+                var startTime = formatDate.getTime();
+                startTime = calcLocalTime(startTime);
+                var endTime = calcLocalTime(event.end.toDate().getTime());
+
+                $.ajax({
+                    type: "POST",
+                    url: "http://localhost:8081/dbotica-spring/doctor/updateCalendarEvent",
+                    //data:JSON.stringify( {'calendarEvent': event}),
+                    beforeSend: function(xhr) {
+                        xhr.setRequestHeader("Content-Type", "application/json");
+                        xhr.setRequestHeader("Accept", "application/json");
+                    },
+                    xhrFields: {
+                        withCredentials: true
+                    },
+                    data: JSON.stringify({
+                        'doctorId': localStorage.getItem('doctorId'),
+                        'id': event.calendarEventId,
+                        'patientId': id,
+                        'startTime': startTime,
+                        'endTime': endTime,
+                        'label': event.title,
+                        'backgroundColor': event.backgroundColor,
+                        'borderColor': event.borderColor
+                    }),
+                    success: function(response) {
+                        var errorCode = response.errorCode;
+                        if (!!errorCode) {
+                            switch (errorCode) {
+                                case "NO_USER_LOGGED_IN":
+                                    localStorage.setItem("isLoggedIn", false);
+                                    swal({
+                                            title: "Error",
+                                            text: "You are not logged into your account. Kindly login again to view this page",
+                                            type: "error",
+                                            confirmButtonText: "OK",
+                                            allowOutsideClick: true
+                                        },
+                                        function() {
+                                            localStorage.setItem("isLoggedIn", false);
+                                            window.location.replace("login.html");
+                                        }
+                                    );
+                                    break;
+                            }
+                        }
+
+                        if (response.success === true) {
+
+                        } else {
+                            swal({
+                                title: "Error",
+                                text: "Event did not get updated. Kindly try in some time.",
+                                type: "error",
+                                confirmButtonText: "OK",
+                                allowOutsideClick: true
+                            });
+                        }
+                    },
+                    error: function(e) {
+                        swal({
+                            title: "Error",
+                            text: "Event did not get updated. Kindly try in some time.",
+                            type: "error",
+                            confirmButtonText: "OK",
+                            allowOutsideClick: true
+                        });
+                    },
+                });
+
+            },
+            drop: function(date) {
+                // is the "remove after drop" checkbox checked?
+                // retrieve the dropped element's stored Event Object
+                console.log('in drop');
+                var originalEventObject = $(this).data('eventObject');
+
+                // we need to copy it, so that multiple events don't have a reference to the same object
+                var copiedEventObject = $.extend({}, originalEventObject);
+
+                // assign it the date that was reported
+                var formatDate = date.toDate();
+                var startTime = formatDate.getTime();
+                startTime = calcLocalTime(startTime);
+                copiedEventObject.start = date;
+                //copiedEventObject.allDay = allDay;
+                copiedEventObject.backgroundColor = parseColor($(this).css("background-color"));
+                copiedEventObject.borderColor = parseColor($(this).css("border-color"));
+                //    console.log(copiedEventObject._id);
+
+                $.ajax({
+                    type: "POST",
+                    url: "http://localhost:8081/dbotica-spring/doctor/addCalendarEvent",
+                    //data:JSON.stringify( {'calendarEvent': event}),
+                    beforeSend: function(xhr) {
+                        xhr.setRequestHeader("Content-Type", "application/json");
+                        xhr.setRequestHeader("Accept", "application/json");
+                    },
+                    xhrFields: {
+                        withCredentials: true
+                    },
+                    data: JSON.stringify({
+                        'doctorId': localStorage.getItem('doctorId'),
+                        'startTime': startTime,
+                        'label': copiedEventObject.title,
+                        'backgroundColor': copiedEventObject.backgroundColor,
+                        'borderColor': copiedEventObject.borderColor
+                    }),
+                    success: function(response) {
+                        var errorCode = response.errorCode;
+                        if (!!errorCode) {
+                            switch (errorCode) {
+                                case "NO_USER_LOGGED_IN":
+                                    localStorage.setItem("isLoggedIn", false);
+                                    swal({
+                                            title: "Error",
+                                            text: "You are not logged into your account. Kindly login again to view this page",
+                                            type: "error",
+                                            confirmButtonText: "OK",
+                                            allowOutsideClick: true
+                                        },
+                                        function() {
+                                            localStorage.setItem("isLoggedIn", false);
+                                            window.location.replace("login.html");
+                                        }
+                                    );
+                                    break;
+                            }
+                        }
+
+                        if (response.success === true) {
+                            var data = $.parseJSON(response.response);
+                            console.log(data);
+                            if (!!data) {
+                                copiedEventObject.calendarEventId = data['id'];
+                            }
+                            $('#calendar').fullCalendar('renderEvent', copiedEventObject, false);
+                            if ($('#drop-remove').is(':checked')) {
+                                $(this).remove();
+                            }
+                        } else {
+                            swal({
+                                title: "Error",
+                                text: "Event did not get updated. Kindly try in some time.",
+                                type: "error",
+                                confirmButtonText: "OK",
+                                allowOutsideClick: true
+                            });
+                        }
+                    },
+                    error: function(e) {
+                        swal({
+                            title: "Error",
+                            text: "Event did not get added. Kindly try in some time.",
+                            type: "error",
+                            confirmButtonText: "OK",
+                            allowOutsideClick: true
+                        });
+                    },
+
+                });
+            }
+        });
+
+        /* ADDING EVENTS */
+        var currColor = "#3c8dbc"; //Red by default
+        //Color chooser button
+        var colorChooser = $("#color-chooser-btn");
+        $("#color-chooser > li > a").click(function(e) {
+            e.preventDefault();
+            //Save color
+            currColor = $(this).css("color");
+            //Add color effect to button
+            $('#add-new-event').css({
+                "background-color": currColor,
+                "border-color": currColor
+            });
+        });
+
+
+        var date1 = new Date();
+
+        $("#add-new-event").click(function(e) {
+
+            e.preventDefault();
+            //  Get value and make sure it is not null
+            var val = $("#new-event").val();
+            if (val.length == 0) {
+                return;
+            }
+            //create event
+
+            var event = $("<div />");
+            event.css({
+                "background-color": currColor,
+                "border-color": currColor,
+                "color": "#fff"
+            }).addClass("external-event");
+            event.html(val);
+
+
+            if ($('#drop-remove').is(':checked')) {
+                // if so, remove the element from the "Draggable Events" list
+                $(this).remove();
+            }
+
+
+
+            // e.preventDefault();
+            //Get value and make sure it is not null
+            var val = $("#new-event").val();
+            if (val.length == 0) {
+                return;
+            }
+
+            //  Create events
+
+            $('#external-events').prepend(event);
+
+            ini_events(event);
+
+
+            //Remove event from text input
+            $("#new-event").val("");
+        });
+
+
+
+    });
+    </script>
+    <script>
+    function getEvents() {
+        console.log('in getEvents');
+        var date = new Date();
+        var d = date.getDate(),
+            m = date.getMonth(),
+            y = date.getFullYear();
+
+        $.ajax({
+            type: "GET",
+            url: "http://localhost:8081/dbotica-spring/doctor/getMyCalendar?start=2016-04-01&end=2016-07-30",
+            //data: {'doctorId': doctorId},
+            // async : false,
+            xhrFields: {
+                withCredentials: true
+            },
+            success: function(response) {
+                if (response.success === true && response.response.length > 2) {
+                    var data = $.parseJSON(response.response);
+                    console.log(data);
+                    console.log(data[0]['calendarEvent']['startTime']);
+                    event = Array();
+                    for (i in data) {
+                        var date = new Date(data[i]['calendarEvent']['startTime']);
+                        d = date.getDate();
+                        m = date.getMonth();
+                        y = date.getFullYear();
+                        st_hrs = date.getHours();
+                        st_mm = date.getMinutes();
+                        console.log(new Date(data[0]['calendarEvent']['startTime']));
+
+                        // console.log(data[i]['patient']['userName']);
+                        event.push({
+                            title: data[i]['patient']['userName'],
+                            calendarEventId: data[i]['calendarEvent']['id'],
+                            start: new Date(y, m, d, st_hrs, st_mm),
+                            backgroundColor: "#f39c12",
+                            borderColor: "#000000"
+                        });
+                        //console.log(event.length);
+
+                    }
+
+                    $('#calendar').fullCalendar('addEventSource', event);
+                }
+
+            },
+            error: function(e) {
+                alert('Error while fetching events!');
+            },
+
+        });
+
+    }
+
+    function parseColor(color) {
+        var arr = [];
+        color.replace(/[\d+\.]+/g, function(v) {
+            arr.push(parseFloat(v));
+        });
+        return "#" + arr.slice(0, 3).map(toHex).join("");
+    }
+
+    function toHex(int) {
+        var hex = int.toString(16);
+        return hex.length == 1 ? "0" + hex : hex;
+    }
+
+    function calcTime(d, offset) {
+        var utc = d.getTime() - (d.getTimezoneOffset() * 60000);
+        var nd = new Date(utc + (3600000 * offset));
+        return nd.getTime();
+    }
+
+    function calcLocalTime(time) {
+        return time - 19800000;
+    }
+
+    function getQueryStringValue(key) {
+        return unescape(window.location.search.replace(new RegExp("^(?:.*[&\\?]" + escape(key).replace(/[\.\+\*]/g, "\\$&") + "(?:\\=([^&]*))?)?.*$", "i"), "$1"));
+    }
+    </script>
+</body>
+
+</html>

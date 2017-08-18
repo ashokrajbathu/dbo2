@@ -1,0 +1,54 @@
+<div ng-controller="personalAssistantCtrl" ng-cloak>
+    <div ng-cloak>
+        <div class="wrapper">
+            <header class="main-header">
+                <a href="#" class="logo">
+                    <span class="logo-mini"><b>db</b></span>
+                    <span class="logo-lg"><b>dbotica</b></span>
+                </a>
+                <nav class="navbar navbar-static-top" role="navigation">
+                    <div class="navbar-custom-menu">
+                        <ul class="nav navbar-nav">
+                        </ul>
+                    </div>
+                </nav>
+            </header>
+            <div class="container">
+                <div id="blurBackScreen" ng-show="blurScreen"></div>
+                <img class="spinner" src="css/images/default (2).gif" ng-show="loading"></img>
+                <div class="row">
+                    <div class="col-md-offset-3 col-md-6">
+                        <div class="signInForm">
+                            <div class="panel signinPanel">
+                                <div class="panel-heading loginPanelHeading">
+                                    <h4 id="loginPanelHeader">Login</h4>
+                                </div>
+                                <div class="panel-body signInPanelBody">
+                                    <form class="form-horizontal">
+                                        <div class="form-group">
+                                            <label for="inputLoginEmail" class="col-md-2 col-sm-2 control-label">User ID</label>
+                                            <div class="col-sm-10  col-md-8">
+                                                <input type="text" ng-model="loginData.userId" class="form-control" id="inputUserId" placeholder="User Id">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="inputLoginPassword" class="col-sm-2 control-label">Password</label>
+                                            <div class="col-sm-10  col-md-8">
+                                                <input type="password" ng-model="loginData.password" class="form-control" id="inputPassword" placeholder="Password">
+                                            </div>
+                                        </div>
+                                    </form>
+                                    <form class="form-inline">
+                                        <div class="col-md-offset-2 col-sm-offset-2 checkbox">
+                                        </div>
+                                        <button type="submit" id="loginBtn" ng-click="loginIntoAssistant()" class="btn loginSubmitBtn">Login</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

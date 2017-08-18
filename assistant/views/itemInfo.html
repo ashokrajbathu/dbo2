@@ -1,0 +1,155 @@
+<div ng-controller="itemInfoCtrl as itemInfo" ng-cloak>
+    <div class="row">
+        <button id="addBatchInItem" type="button" class="pull-right btn batchUpdateBtns" data-toggle="modal" data-target="#myModal">Add Batch</button>
+        <button ng-click="itemInfo.backToItems()" class="pull-right btn batchUpdateBtns viewItemsBtn">Back To Items</button>
+    </div>
+    <h3 id="itemInfoHeader">Item Details: </h3>
+    <div class="checkbox">
+        <label class="inactiveLabel" style="font-size:16px;">
+            <input ng-change="itemInfo.stateChanged('itemInfo.itemInactive')" ng-model="itemInfo.itemInactive" ng-checked="itemInfo.itemInactive" type="checkbox"> Make Item In-Active
+        </label>
+        <br>
+        <span class="inactiveLabel" ng-if="itemInfo.itemDetailsUpdateError" style="color:red;">(*Deselect the checkbox to update item Details)</span>
+    </div>
+    <div id="blurBackScreen" ng-show="itemInfo.blurScreen"></div>
+    <img class="spinner" src="css/images/default (2).gif" ng-show="itemInfo.loading"></img>
+    <div id="myModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h3 class="modal-title">Add New Batch</h3>
+                </div>
+                <div class="modal-body">
+                    <p ng-if="itemInfo.warningMessageItemInfo" id="warningMessage">Please enter the (*) marked Fields</p>
+                    <form class="form-horizontal" name="addBatchForm">
+                        <div class="form-group ">
+                            <label for="addBatchOrganizationId" class="col-sm-3 control-label">Organization Id</label>
+                            <div class="col-sm-6 ">
+                                <input type="text " class="form-control " ng-model="itemInfo.addBatchInItemInfo.organizationId" id="addBatchOrganizationIdItemInfo" readonly>
+                            </div>
+                        </div>
+                        <div class="form-group ">
+                            <label for="inputItemNameAddBatch" class="col-sm-3 control-label ">Item Name</label>
+                            <div class="col-sm-6 ">
+                                <input type="text " class="form-control " ng-model="itemInfo.addBatchInItemInfo.itemName" id="inputItemNameAddBatchItemInfo" readonly>
+                            </div>
+                        </div>
+                        <div class="form-group ">
+                            <label for="addBatchNumber" class="col-sm-3 control-label ">Batch No.</label>
+                            <div class="col-sm-6 ">
+                                <input type="text " class="form-control " ng-model="itemInfo.addBatchInItemInfo.batchNumber" id="addBatchNumberItemInfo">
+                            </div>
+                        </div>
+                        <div class="form-group ">
+                            <label for="addBatchCostPrice" class="col-sm-3 control-label ">Cost Price</label>
+                            <div class="col-sm-6 ">
+                                <input type="text " class="form-control" ng-model="itemInfo.addBatchInItemInfo.costPrice" id="addBatchCostPriceItemInfo">
+                            </div>
+                        </div>
+                        <div class="form-group ">
+                            <label for="addBatchUnits" class="col-sm-3 control-label ">Units(*)</label>
+                            <div class="col-sm-6 ">
+                                <input type="text " name="units" class="form-control" ng-model="itemInfo.addBatchInItemInfo.units" id="addBatchUnitsItemInfo">
+                            </div>
+                        </div>
+                        <div class="form-group ">
+                            <label for="addBatchExpiryTime" class="col-sm-3 control-label ">Expiry Date(*)</label>
+                            <div class="col-sm-6">
+                                <input type="text " class="form-control " name="expiryDate" ng-model="itemInfo.addBatchInItemInfo.expiryDate" id="addBatchExpiryTimeItemInfo" readonly>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputAddBatchItemInfo" class="col-sm-3 control-label"></label>
+                            <div class="col-sm-6">
+                                <button type="button submit" ng-click="itemInfo.addBatchForSelectedItemInItemInfo()" class="btn inventoryBtn">Add Batch</button>
+                                <button type="button" data-dismiss="modal" class="btn inventoryBtn">Cancel</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div>
+        <div class="row">
+            <div class="col-md-3 col-sm-6 col-xs-6 itemInfo">
+                <form>
+                    <div class="form-group">
+                        <label for="itemName" class="control-label">Item Name :</label>
+                        <input ng-readonly="itemInfo.textBoxFreeze" ng-class="" class="form-control" type="text" ng-model="itemInfo.inventoryItem.itemName">
+                    </div>
+                    <div class="form-group">
+                        <label for="itemCode" class="control-label">Item Code :</label>
+                        <input ng-readonly="itemInfo.textBoxFreeze" class="form-control" type="text" ng-model="itemInfo.inventoryItem.itemCode">
+                    </div>
+                    <div class="form-group">
+                        <label for="itemCost" class="control-label">Item Cost:</label>
+                        <input ng-readonly="itemInfo.textBoxFreeze" class="form-control" type="text" ng-model="itemInfo.inventoryItem.retailPrice">
+                    </div>
+                    <div class="form-group">
+                        <label for="itemType" class="control-label">Item Type :</label>
+                        <select ng-disabled="itemInfo.disableSelectBox" class="form-control" ng-model="itemInfo.inventoryItem.itemType">
+                            <option>DRUG</option>
+                            <option>SUPPLIES</option>
+                            <option>EQUIPMENT</option>
+                            <option>OTHERS</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="requiredLevel" class="control-label">Required Level :</label>
+                        <input ng-readonly="itemInfo.textBoxFreeze" ng-class="" type="text" class="form-control" ng-model="itemInfo.inventoryItem.requiredStock">
+                    </div>
+                    <div class="form-group">
+                        <label for="manufacturer" class="control-label">Manufacturer :</label>
+                        <input ng-readonly="itemInfo.textBoxFreeze" ng-class="" type="text" class="form-control" ng-model="itemInfo.inventoryItem.manufacturer">
+                    </div>
+                    <button ng-disabled="itemInfo.updateItemDetails" ng-click="itemInfo.updateItem()" type="submit" class="btn batchUpdateBtns">Update Details</button>
+                </form>
+            </div>
+            <div class="col-md-9 itemTable">
+                <table class="table table-bordered itemInfoTable">
+                    <thead>
+                        <tr id="itemInfoTableHeaderRow">
+                            <th width="10%;">BATCH NO.</th>
+                            <th width="10%;">EXP.Dt.</th>
+                            <th width="12%;">T.S.</th>
+                            <th width="12%;">A.S.</th>
+                            <th width="10%;">C.S.</th>
+                            <th width="10%;">Exp.S.</th>
+                            <th width="10%;">Ret.S.</th>
+                            <th width="12%;">UNITS</th>
+                            <th>ACTIONS</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr id="batchesRow" ng-repeat="batch in itemInfo.informationOfBatches">
+                            <td ng-bind="batch.batchNo"></td>
+                            <td ng-bind="batch.expiryTime | date"></td>
+                            <td ng-bind="batch.totalStock"></td>
+                            <td ng-bind="batch.availableStock"></td>
+                            <td ng-bind="batch.consumedUnits"></td>
+                            <td ng-bind="batch.expiredUnits"></td>
+                            <td ng-bind="batch.returnedUnits"></td>
+                            <td>
+                                <input ng-readonly="itemInfo.textBoxFreeze" class="form-control batchInputTextBoxes" ng-attr-id="{{'batchTextBoxes'+$index}}" placeholder="units">
+                            </td>
+                            <td>
+                                <select ng-disabled="itemInfo.disableSelectBoxInTable" ng-attr-id="{{'batchSelectBoxes'+$index}}" class="selectInBatchesTable">
+                                    <option>CONSUMED</option>
+                                    <option>EXPIRED</option>
+                                    <option>RETURNED</option>
+                                </select>
+                            </td>
+                            <td>
+                                <button ng-disabled="itemInfo.updateItemDetailsInTheTable" class="btn batchUpdateBtns" ng-click="itemInfo.updateBatch(batch,$index)">Update</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
