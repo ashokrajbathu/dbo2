@@ -163,7 +163,7 @@ function printPatientPrescriptionController($scope, $log, $http, $q) {
         var deferred = $q.defer();
         var imageRequest = {
             method: 'GET',
-            url: 'http://localhost:8080/dbotica-spring/doctor/downloadPrescriptionImage?prescriptionId=' + prescriptionId,
+            url: 'http://34.211.209.156:8080/dbotica-spring/doctor/downloadPrescriptionImage?prescriptionId=' + prescriptionId,
             withCredentials: true
         }
         $http(imageRequest).then(function(downloadImageSuccess) {

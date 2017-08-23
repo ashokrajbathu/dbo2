@@ -66,7 +66,7 @@ app.service('dischargeServices', ['$http', '$q', function($http, $q) {
         var deferred = $q.defer();
         var instanceRequest = {
             method: 'GET',
-            url: 'http://localhost:8080/dbotica-spring/organization/hospital/template/getPatientTemplateInstances?patientId=' + patientId + '&organizationId=' + organizationId,
+            url: 'http://34.211.209.156:8080/dbotica-spring/organization/hospital/template/getPatientTemplateInstances?patientId=' + patientId + '&organizationId=' + organizationId,
             withCredentials: true
         }
         $http(instanceRequest).then(function(instanceSuccess) {
